@@ -8,7 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 深色模式</button>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            深色模式
+        </button>
         <a href="../index.html" class="back-link">返回主页</a>
         <h1>1.4 操作系统结构、引导、虚拟机</h1>
 
@@ -20,6 +25,12 @@
                 <div class="option"><input type="radio" name="q1" value="C" id="q1c"><label for="q1c">C. 微内核构架</label></div>
                 <div class="option"><input type="radio" name="q1" value="D" id="q1d"><label for="q1d">D. 宏内核构架</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    <strong>A. 分层式构架</strong>设计的操作系统结构清晰且便于调试。分层式结构将操作系统分为若干层，每层只能调用下层提供的服务，层次关系明确，便于理解和调试。模块化、微内核等结构虽然也有各自优点，但在结构清晰性和调试便利性方面不如分层式。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -29,6 +40,12 @@
                 <div class="option"><input type="radio" name="q2" value="B" id="q2b"><label for="q2b">B. 容易实现在系统中增加或替换一层而不影响其他层</label></div>
                 <div class="option"><input type="radio" name="q2" value="C" id="q2c"><label for="q2c">C. 具有非常灵活的依赖关系</label></div>
                 <div class="option"><input type="radio" name="q2" value="D" id="q2d"><label for="q2d">D. 系统效率较低</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    错误的说法是<strong>C. 具有非常灵活的依赖关系</strong>。分层式结构的特点是各层之间只能单向依赖，上层只能调用下层服务，不能反向调用，因此依赖关系是严格的单向关系，而不是灵活的依赖关系。这种严格的层次关系正是分层式结构的核心特征。
+                </div>
             </div>
         </div>
         
@@ -40,6 +57,12 @@
                 <div class="option"><input type="radio" name="q3" value="C" id="q3c"><label for="q3c">C. 内核中的各个模块，可以相互调用，无须通过消息传递进行通信，效率高</label></div>
                 <div class="option"><input type="radio" name="q3" value="D" id="q3d"><label for="q3d">D. 各模块间相互依赖，相比于分层式操作系统，模块化操作系统更难调试和验证</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    不属于模块化操作系统特点的是<strong>B. 内核中的某个功能模块出错不会导致整个系统崩溃，可靠性高</strong>。这个说法是错误的。在模块化操作系统中，各模块运行在同一地址空间，某个模块出错可能会影响整个系统。而微内核系统中各服务运行在独立地址空间，才具有更高的可靠性。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -49,6 +72,12 @@
                 <div class="option"><input type="radio" name="q4" value="B" id="q4b"><label for="q4b">B. 缺乏可扩展性而不方便移植</label></div>
                 <div class="option"><input type="radio" name="q4" value="C" id="q4c"><label for="q4c">C. 内核切换太慢</label></div>
                 <div class="option"><input type="radio" name="q4" value="D" id="q4d"><label for="q4d">D. 可靠性较低</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    不属于大内核操作系统缺点的是<strong>C. 内核切换太慢</strong>。实际上，大内核系统由于所有服务都在内核空间运行，系统调用和模块间通信效率较高，内核切换速度较快。内核切换慢是微内核系统的缺点，因为微内核需要频繁进行用户态和内核态之间的切换以及进程间通信。
+                </div>
             </div>
         </div>
         
@@ -60,6 +89,12 @@
                 <div class="option"><input type="radio" name="q5" value="C" id="q5c"><label for="q5c">C. 基于C/S模式</label></div>
                 <div class="option"><input type="radio" name="q5" value="D" id="q5d"><label for="q5d">D. 策略与机制分离</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    不适合描述微内核操作系统的是<strong>B. 功能分层设计</strong>。微内核操作系统的特点是内核足够小，基于客户/服务器(C/S)模式，策略与机制分离。而功能分层设计是分层式操作系统的特点，不是微内核系统的特征。微内核强调的是最小化内核功能，而不是分层设计。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -69,6 +104,12 @@
                 <div class="option"><input type="radio" name="q6" value="B" id="q6b"><label for="q6b">B. III和V</label></div>
                 <div class="option"><input type="radio" name="q6" value="C" id="q6c"><label for="q6c">C. 仅V</label></div>
                 <div class="option"><input type="radio" name="q6" value="D" id="q6d"><label for="q6d">D. IV和V</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    在微内核结构中，不宜放在微内核中的是<strong>C. 仅V</strong>（文件系统服务）。微内核应该只包含最基本的功能：进程间通信机制、低级I/O、低级进程管理和调度、中断和陷入处理等。而文件系统服务属于高级服务，应该作为用户态服务器运行，不应放在微内核中。
+                </div>
             </div>
         </div>
         
@@ -80,6 +121,12 @@
                 <div class="option"><input type="radio" name="q7" value="C" id="q7c"><label for="q7c">C. II、IV</label></div>
                 <div class="option"><input type="radio" name="q7" value="D" id="q7d"><label for="q7d">D. I、IV</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    微内核结构的特点是<strong>C. II、IV</strong>：II正确：添加系统服务时不必修改内核，因为服务运行在用户态；IV正确：使系统更可靠，因为服务隔离运行。I错误：微内核由于频繁的进程间通信，效率通常较低；III错误：微内核结构比单一内核更稳定可靠。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -89,6 +136,12 @@
                 <div class="option"><input type="radio" name="q8" value="B" id="q8b"><label for="q8b">B. I和III</label></div>
                 <div class="option"><input type="radio" name="q8" value="C" id="q8c"><label for="q8c">C. II</label></div>
                 <div class="option"><input type="radio" name="q8" value="D" id="q8d"><label for="q8d">D. III和IV</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    正确的说法是<strong>C. II</strong>。II错误：这是分层式OS结构的特点，不是模块化OS结构的特点；I错误：Windows采用的是混合内核结构；III正确：微内核确实适合分布式系统；IV错误：微内核添加服务不需修改内核，但效率通常较低，不是更高效。
+                </div>
             </div>
         </div>
         
@@ -100,6 +153,12 @@
                 <div class="option"><input type="radio" name="q9" value="C" id="q9c"><label for="q9c">C. 可提高操作系统的可移植性</label></div>
                 <div class="option"><input type="radio" name="q9" value="D" id="q9d"><label for="q9d">D. 可提高操作系统的可拓展性</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    不正确的描述是<strong>B. 可提高操作系统的执行效率</strong>。微内核操作系统由于需要频繁进行用户态和内核态之间的切换，以及大量的进程间通信，执行效率通常比宏内核系统要低。微内核的优势在于可靠性、可移植性和可扩展性，而不是执行效率。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -109,6 +168,12 @@
                 <div class="option"><input type="radio" name="q10" value="B" id="q10b"><label for="q10b">B. 用户进程通过调用“库”请求操作系统外核的服务</label></div>
                 <div class="option"><input type="radio" name="q10" value="C" id="q10c"><label for="q10c">C. 外核负责完成进程调度</label></div>
                 <div class="option"><input type="radio" name="q10" value="D" id="q10d"><label for="q10d">D. 外核可以减少虚拟硬件资源的“映射”开销，提升系统效率</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    错误的说法是<strong>C. 外核负责完成进程调度</strong>。外核(exokernel)的设计理念是将硬件资源直接暴露给应用程序，让应用程序直接管理硬件资源。外核只负责资源分配和保护，而进程调度等高级功能由应用程序或库操作系统来完成，不是外核的职责。
+                </div>
             </div>
         </div>
         
@@ -120,6 +185,12 @@
                 <div class="option"><input type="radio" name="q11" value="C" id="q11c"><label for="q11c">C. 引导程序会将硬盘中存储的操作系统全部加载到内存中</label></div>
                 <div class="option"><input type="radio" name="q11" value="D" id="q11d"><label for="q11d">D. 若计算机中安装了双系统，引导程序会与用户交互加载有关系统</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    不正确的描述是<strong>C. 引导程序会将硬盘中存储的操作系统全部加载到内存中</strong>。引导程序只会加载操作系统的核心部分到内存中，而不是全部操作系统。操作系统的其他部分会根据需要动态加载。如果将整个操作系统都加载到内存，会占用大量内存空间，这是不现实也不必要的。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -129,6 +200,12 @@
                 <div class="option"><input type="radio" name="q12" value="B" id="q12b"><label for="q12b">B. DRAM</label></div>
                 <div class="option"><input type="radio" name="q12" value="C" id="q12c"><label for="q12c">C. ROM</label></div>
                 <div class="option"><input type="radio" name="q12" value="D" id="q12d"><label for="q12d">D. CMOS</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    存放操作系统自举程序的芯片是<strong>C. ROM</strong>。ROM(只读存储器)是非易失性存储器，断电后数据不会丢失，因此适合存放系统启动时需要的自举程序(BIOS)。SRAM和DRAM都是易失性存储器，断电后数据丢失；CMOS主要用于存储系统配置信息，不是存放自举程序的地方。
+                </div>
             </div>
         </div>
         
@@ -140,6 +217,12 @@
                 <div class="option"><input type="radio" name="q13" value="C" id="q13c"><label for="q13c">C. 主存ROM区</label></div>
                 <div class="option"><input type="radio" name="q13" value="D" id="q13d"><label for="q13d">D. 硬盘</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    计算机操作系统的引导程序位于<strong>D. 硬盘</strong>中。虽然BIOS存储在主板ROM中，但操作系统的引导程序(如GRUB、NTLDR等)通常存储在硬盘的引导扇区中。BIOS负责硬件初始化和自检，然后将控制权转交给硬盘中的操作系统引导程序，由引导程序负责加载操作系统。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -149,6 +232,12 @@
                 <div class="option"><input type="radio" name="q14" value="B" id="q14b"><label for="q14b">B. ①③⑤④②</label></div>
                 <div class="option"><input type="radio" name="q14" value="C" id="q14c"><label for="q14c">C. ①③④⑤②</label></div>
                 <div class="option"><input type="radio" name="q14" value="D" id="q14d"><label for="q14d">D. ①⑤③④②</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    计算机的启动过程是<strong>C. ①③④⑤②</strong>。正确的启动顺序是：①CPU加电，CS:IP指向FFFFOH；③执行JMP指令跳转到BIOS；④登记BIOS中断例程入口地址；⑤硬件自检；②进行操作系统引导。这个顺序反映了从硬件初始化到软件加载的完整过程。
+                </div>
             </div>
         </div>
         
@@ -160,6 +249,12 @@
                 <div class="option"><input type="radio" name="q15" value="C" id="q15c"><label for="q15c">C. 操作系统</label></div>
                 <div class="option"><input type="radio" name="q15" value="D" id="q15d"><label for="q15d">D. BIOS</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    这是<strong>A. MBR</strong>的任务。MBR(主引导记录)位于硬盘的第一个扇区，包含分区表和主引导程序。MBR的主要任务就是检查分区表，确定活动分区，然后将活动分区的引导扇区加载到内存中执行。这是操作系统启动过程中的关键步骤。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -169,6 +264,12 @@
                 <div class="option"><input type="radio" name="q16" value="B" id="q16b"><label for="q16b">B. I和III</label></div>
                 <div class="option"><input type="radio" name="q16" value="C" id="q16c"><label for="q16c">C. 仅I</label></div>
                 <div class="option"><input type="radio" name="q16" value="D" id="q16d"><label for="q16d">D. I、II和III</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    正确的说法是<strong>A. I和II</strong>：I正确：虚拟机可以用软件实现(如VMware、VirtualBox)；II正确：虚拟机也可以用硬件实现(如Intel VT-x、AMD-V)。III错误：在单CPU系统上，多台虚拟机是通过时间片轮转实现的并发，而不是真正的并行；只有在多CPU系统上才能实现真正的并行。
+                </div>
             </div>
         </div>
         
@@ -180,6 +281,12 @@
                 <div class="option"><input type="radio" name="q17" value="C" id="q17c"><label for="q17c">C. 虚拟机是运行在计算机中的一个应用程序</label></div>
                 <div class="option"><input type="radio" name="q17" value="D" id="q17d"><label for="q17d">D. 虚拟机文件封装在一个文件夹中，并存储在数据存储器中</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    错误的说法是<strong>B. 虚拟机中只能安装一种操作系统</strong>。这是错误的，VMware workstation等虚拟机软件支持在同一台物理机上创建多个虚拟机，每个虚拟机可以安装不同的操作系统，如Windows、Linux、macOS等。这正是虚拟机技术的重要优势之一。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -189,6 +296,12 @@
                 <div class="option"><input type="radio" name="q18" value="B" id="q18b"><label for="q18b">B. I和III</label></div>
                 <div class="option"><input type="radio" name="q18" value="C" id="q18c"><label for="q18c">C. I、III和IV</label></div>
                 <div class="option"><input type="radio" name="q18" value="D" id="q18d"><label for="q18d">D. I、II、III、IV</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    正确的说法是<strong>B. I和III</strong>：I正确：第一类VMM直接运行在硬件上，效率高于运行在宿主操作系统上的第二类VMM；III正确：VMM的核心功能就是将物理机虚拟化为多台虚拟机。II错误：VMM代码量通常小于完整操作系统；IV错误：第二类VMM运行在宿主操作系统上，不需要完全运行在最高特权级。
+                </div>
             </div>
         </div>
         
@@ -200,6 +313,12 @@
                 <div class="option"><input type="radio" name="q19" value="C" id="q19c"><label for="q19c">C. EPROM</label></div>
                 <div class="option"><input type="radio" name="q19" value="D" id="q19d"><label for="q19d">D. RAM</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    操作系统最终被加载到<strong>D. RAM</strong>。计算机开机后，BIOS首先运行进行硬件自检，然后将操作系统从硬盘加载到内存(RAM)中执行。RAM是易失性存储器，读写速度快，适合运行程序。BIOS、ROM、EPROM都是非易失性存储器，用于存储固化程序，不是操作系统的运行环境。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -210,6 +329,12 @@
                 <div class="option"><input type="radio" name="q20" value="C" id="q20c"><label for="q20c">C. 硬盘分区表</label></div>
                 <div class="option"><input type="radio" name="q20" value="D" id="q20d"><label for="q20d">D. 文件系统的索引结点表</label></div>
             </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    需要在操作系统初始化过程中创建的是<strong>A. 中断向量表</strong>。中断向量表是操作系统管理中断的重要数据结构，需要在系统初始化时建立。文件系统的根目录和索引结点表是文件系统的组成部分，在文件系统挂载时创建；硬盘分区表是在硬盘分区时创建的，不是操作系统初始化时创建。
+                </div>
+            </div>
         </div>
         
         <div class="question">
@@ -219,6 +344,12 @@
                 <div class="option"><input type="radio" name="q21" value="B" id="q21b"><label for="q21b">B. 仅I、II、III</label></div>
                 <div class="option"><input type="radio" name="q21" value="C" id="q21c"><label for="q21c">C. 仅I、III、IV</label></div>
                 <div class="option"><input type="radio" name="q21" value="D" id="q21d"><label for="q21d">D. 仅II、III、IV</label></div>
+            </div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    微内核操作系统具有的特征是<strong>D. 仅II、III、IV</strong>：II正确：较高的可靠性，因为服务隔离运行；III正确：较高的安全性，因为权限分离；IV正确：较强的可扩展性，因为易于添加新服务。I错误：微内核由于频繁的进程间通信和上下文切换，性能通常不如宏内核。
+                </div>
             </div>
         </div>
     </div>

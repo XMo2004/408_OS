@@ -200,10 +200,13 @@ function shuffleOptions() {
             const radio = optionData.element.querySelector('input[type="radio"]');
             const label = optionData.element.querySelector('label');
             
-            // 更新radio的value
+            // 更新radio的value和id
             radio.value = newValue;
+            const newId = `q${questionNum}${newValue.toLowerCase()}`;
+            radio.id = newId;
             
-            // 更新label的文本，保持新的字母顺序
+            // 更新label的for属性和文本
+            label.setAttribute('for', newId);
             label.textContent = `${newValue}. ${optionData.text.substring(3)}`; // 移除原来的"A. "前缀
             
             // 重新添加到容器中
@@ -214,12 +217,33 @@ function shuffleOptions() {
         const originalCorrectAnswers = getOriginalCorrectAnswers();
         const originalCorrectValue = originalCorrectAnswers[index];
         const originalCorrectOption = originalOptions.find(opt => opt.value === originalCorrectValue);
-        const newCorrectIndex = shuffledOptions.findIndex(opt => opt.text === originalCorrectOption.text);
-        const newCorrectValue = String.fromCharCode(65 + newCorrectIndex);
         
-        // 更新全局正确答案数组
-        window.shuffledCorrectAnswers = window.shuffledCorrectAnswers || [];
-        window.shuffledCorrectAnswers[questionNum - 1] = newCorrectValue;
+        if (originalCorrectOption) {
+            // 提取选项的实际内容（去掉"A. "、"B. "等前缀）
+            const originalCorrectContent = originalCorrectOption.text.replace(/^[A-D]\. /, '');
+            
+            // 在打乱后的选项中找到相同内容的选项
+            const newCorrectIndex = shuffledOptions.findIndex(opt => {
+                const shuffledContent = opt.text.replace(/^[A-D]\. /, ''); // 去掉原始的前缀
+                return shuffledContent === originalCorrectContent;
+            });
+            
+            if (newCorrectIndex !== -1) {
+                const newCorrectValue = String.fromCharCode(65 + newCorrectIndex);
+                
+                // 更新全局正确答案数组
+                window.shuffledCorrectAnswers = window.shuffledCorrectAnswers || [];
+                window.shuffledCorrectAnswers[questionNum - 1] = newCorrectValue;
+            } else {
+                // 如果找不到匹配的选项，保持原始答案
+                window.shuffledCorrectAnswers = window.shuffledCorrectAnswers || [];
+                window.shuffledCorrectAnswers[questionNum - 1] = originalCorrectValue;
+            }
+        } else {
+            // 如果找不到原始正确选项，保持原始答案
+            window.shuffledCorrectAnswers = window.shuffledCorrectAnswers || [];
+            window.shuffledCorrectAnswers[questionNum - 1] = originalCorrectValue;
+        }
     });
 }
 
@@ -231,8 +255,9 @@ function getOriginalCorrectAnswers() {
 
 // 添加选项点击事件监听
 function initializeQuizEvents() {
-    // 首先随机打乱选项
-    shuffleOptions();
+    // 获取总题数
+    const questions = document.querySelectorAll('.question');
+    totalQuestions = questions.length;
     
     // 为所有选项添加点击事件
     const options = document.querySelectorAll('.option');
@@ -269,8 +294,8 @@ function initializeQuizEvents() {
                     optionDiv.classList.add('disabled');
                 });
                 
-                // 自动判断答案（使用打乱后的正确答案）
-                const correctAnswers = window.shuffledCorrectAnswers || getOriginalCorrectAnswers();
+                // 自动判断答案（使用原始正确答案）
+                const correctAnswers = getOriginalCorrectAnswers();
                 checkAnswer(questionNum, correctAnswers[questionNum - 1]);
                 
                 // 自动保存进度和更新显示
@@ -306,11 +331,29 @@ function toggleTheme() {
     
     if (body.getAttribute('data-theme') === 'dark') {
         body.removeAttribute('data-theme');
-        themeToggle.textContent = '🌙 深色模式';
+        themeToggle.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            深色模式
+        `;
         localStorage.setItem('theme', 'light');
     } else {
         body.setAttribute('data-theme', 'dark');
-        themeToggle.textContent = '☀️ 浅色模式';
+        themeToggle.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            浅色模式
+        `;
         localStorage.setItem('theme', 'dark');
     }
 }
@@ -323,7 +366,20 @@ function initializeTheme() {
     if (savedTheme === 'dark') {
         document.body.setAttribute('data-theme', 'dark');
         if (themeToggle) {
-            themeToggle.textContent = '☀️ 浅色模式';
+            themeToggle.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                浅色模式
+            `;
         }
     }
 }
@@ -346,7 +402,50 @@ function saveProgress() {
         timestamp: new Date().toISOString()
     };
     
-    localStorage.setItem(currentPageKey, JSON.stringify(progressData));
+    try {
+        localStorage.setItem(currentPageKey, JSON.stringify(progressData));
+        showSaveSuccessMessage();
+    } catch (error) {
+        console.error('保存进度失败:', error);
+        showSaveErrorMessage();
+    }
+}
+
+// 显示保存成功提示
+function showSaveSuccessMessage() {
+    showMessage('✅ 进度保存成功！', 'success');
+}
+
+// 显示保存失败提示
+function showSaveErrorMessage() {
+    showMessage('❌ 保存失败，请重试', 'error');
+}
+
+// 通用消息提示函数
+function showMessage(text, type = 'success') {
+    // 移除已存在的消息
+    const existingMessage = document.querySelector('.save-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // 创建消息元素
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `save-message ${type}`;
+    messageDiv.textContent = text;
+    
+    // 添加到页面
+    document.body.appendChild(messageDiv);
+    
+    // 3秒后自动消失
+    setTimeout(() => {
+        if (messageDiv.parentNode) {
+            messageDiv.classList.add('fade-out');
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 300);
+        }
+    }, 3000);
 }
 
 // 加载学习进度
@@ -413,6 +512,9 @@ function restoreQuizState() {
         }
     });
     
+    // 更新进度显示
+    updateProgressDisplay();
+    
     // 如果所有题目都已完成，显示结果
     if (Object.keys(userAnswers).length === totalQuestions) {
         setTimeout(() => {
@@ -442,46 +544,165 @@ function createProgressControls() {
     const container = document.querySelector('.container');
     const controlsDiv = document.createElement('div');
     controlsDiv.className = 'progress-controls';
+    
+    // 创建题目状态段
+    let segmentsHTML = '';
+    for (let i = 1; i <= totalQuestions; i++) {
+        const segmentWidth = (100 / totalQuestions).toFixed(2);
+        segmentsHTML += `<div class="progress-segment unanswered" data-question="${i}" style="width: ${segmentWidth}%" title="题目 ${i}"></div>`;
+    }
+    
     controlsDiv.innerHTML = `
         <div class="progress-info">
-            <span class="progress-text">学习进度: <span id="progress-count">0</span>/${totalQuestions}</span>
-            <span class="progress-percentage">(<span id="progress-percent">0</span>%)</span>
+            <div class="progress-text-info">
+                <span class="progress-text">学习进度: <span id="progress-count">0</span>/${totalQuestions}</span>
+                <span class="progress-percentage">正确率: <span id="accuracy-percent">0</span>%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-segments">
+                    ${segmentsHTML}
+                </div>
+            </div>
         </div>
-        <div class="control-buttons">
-            <button class="reset-btn" onclick="resetProgress()" title="重置学习进度">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C9.25022 4 6.82447 5.38734 5.38451 7.50024" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                重置进度
-            </button>
-            <button class="save-btn" onclick="saveProgress()" title="手动保存进度">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16L21 8V19C21 20.1046 20.1046 21 19 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M17 21V13H7V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M7 3V8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                保存进度
-            </button>
+        <div class="progress-controls-bottom">
+            <div class="control-buttons">
+                <button class="reset-btn" onclick="resetProgress()" title="重置学习进度">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C9.25022 4 6.82447 5.38734 5.38451 7.50024" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    重置进度
+                </button>
+                <button class="save-btn" onclick="saveProgress()" title="手动保存进度">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16L21 8V19C21 20.1046 20.1046 21 19 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 21V13H7V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 3V8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    保存进度
+                </button>
+            </div>
         </div>
     `;
     
     // 插入到标题后面
     const h1 = container.querySelector('h1');
     h1.insertAdjacentElement('afterend', controlsDiv);
+    
+    // 为每个进度条段添加点击事件监听器
+    const segments = controlsDiv.querySelectorAll('.progress-segment');
+    segments.forEach(segment => {
+        segment.addEventListener('click', function() {
+            const questionNum = parseInt(this.getAttribute('data-question'));
+            scrollToQuestion(questionNum);
+        });
+        
+        // 添加鼠标悬停效果
+        segment.style.cursor = 'pointer';
+    });
+}
+
+// 跳转到指定题目
+function scrollToQuestion(questionNum) {
+    const questionElement = document.querySelector(`input[name="q${questionNum}"]`);
+    if (questionElement) {
+        const questionDiv = questionElement.closest('.question');
+        if (questionDiv) {
+            // 平滑滚动到题目位置
+            questionDiv.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+            
+            // 添加高亮效果
+            questionDiv.classList.add('highlight');
+            setTimeout(() => {
+                questionDiv.classList.remove('highlight');
+            }, 2000);
+        }
+    }
 }
 
 // 更新进度显示
 function updateProgressDisplay() {
     const progressCount = document.getElementById('progress-count');
-    const progressPercent = document.getElementById('progress-percent');
+    const accuracyPercent = document.getElementById('accuracy-percent');
     
-    if (progressCount && progressPercent) {
+    if (progressCount && accuracyPercent) {
         const answered = answeredQuestions.size;
-        const percentage = totalQuestions > 0 ? Math.round((answered / totalQuestions) * 100) : 0;
+        
+        // 计算正确率
+        const correctCount = Object.values(userAnswers).filter(answer => answer.isCorrect).length;
+        const accuracy = answered > 0 ? Math.round((correctCount / answered) * 100) : 0;
         
         progressCount.textContent = answered;
-        progressPercent.textContent = percentage;
+        accuracyPercent.textContent = accuracy;
+        
+        // 更新每个题目段的状态
+        updateProgressSegments();
+    }
+}
+
+// 更新进度条段状态
+function updateProgressSegments() {
+    for (let i = 1; i <= totalQuestions; i++) {
+        const segment = document.querySelector(`[data-question="${i}"]`);
+        if (!segment) continue;
+        
+        // 重置所有状态类
+        segment.classList.remove('unanswered', 'correct', 'incorrect');
+        
+        if (userAnswers[i]) {
+            // 已答题
+            if (userAnswers[i].isCorrect) {
+                segment.classList.add('correct');
+                segment.title = `题目 ${i}: 正确 ✓`;
+            } else {
+                segment.classList.add('incorrect');
+                segment.title = `题目 ${i}: 错误 ✗`;
+            }
+        } else {
+            // 未答题
+            segment.classList.add('unanswered');
+            segment.title = `题目 ${i}: 未答题`;
+        }
+    }
+}
+
+// 处理URL参数，跳转到指定题目
+function handleUrlParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const questionNum = urlParams.get('question');
+    
+    if (questionNum) {
+        // 延迟执行，确保页面完全加载
+        setTimeout(() => {
+            const targetQuestion = document.querySelector(`[name="q${questionNum}"]`);
+            if (targetQuestion) {
+                const questionElement = targetQuestion.closest('.question');
+                if (questionElement) {
+                    // 滚动到指定题目
+                    questionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // 高亮显示题目
+                    questionElement.style.backgroundColor = 'var(--accent-color-light, #fff3cd)';
+                    questionElement.style.border = '2px solid var(--accent-color, #ffc107)';
+                    questionElement.style.borderRadius = '8px';
+                    questionElement.style.transition = 'all 0.3s ease';
+                    questionElement.style.padding = '20px';
+                    questionElement.style.margin = '10px 0';
+                    
+                    // 3秒后移除高亮
+                    setTimeout(() => {
+                        questionElement.style.backgroundColor = '';
+                        questionElement.style.border = '';
+                        questionElement.style.borderRadius = '';
+                        questionElement.style.padding = '';
+                        questionElement.style.margin = '';
+                    }, 3000);
+                }
+            }
+        }, 500);
     }
 }
 
@@ -491,6 +712,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 设置当前页面键
     currentPageKey = getCurrentPageKey();
+    
+    // 处理URL参数，检查是否需要跳转到特定题目
+    handleUrlParameters();
     
     // 尝试加载之前的进度
     const hasProgress = loadProgress();
@@ -531,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         groupRadio.closest('.option').classList.add('disabled');
                     });
                     
-                    const correctAnswers = window.shuffledCorrectAnswers || getOriginalCorrectAnswers();
+                    const correctAnswers = getOriginalCorrectAnswers();
                     checkAnswer(questionNum, correctAnswers[questionNum - 1]);
                     
                     // 自动保存进度

@@ -8,7 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 深色模式</button>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            深色模式
+        </button>
         <a href="../index.html" class="back-link">返回主页</a>
         <h1>（二）操作系统发展历程</h1>
         <h2>一、单项选择题</h2>
@@ -22,7 +27,12 @@
                 <div class="option"><input type="radio" name="q1" value="C" id="q1c"><label for="q1c">C. 交换技术</label></div>
                 <div class="option"><input type="radio" name="q1" value="D" id="q1d"><label for="q1d">D. 多道程序设计技术</label></div>
             </div>
-            <div id="result1"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    <strong>多道程序设计技术</strong>是提高单机资源利用率的关键技术。通过在内存中同时存放多个程序，当一个程序因等待I/O而暂停时，CPU可以切换到另一个程序继续执行，从而大大提高了CPU和其他系统资源的利用率。
+                </div>
+            </div>
         </div>
         
         <!-- 题目2 -->
@@ -34,7 +44,12 @@
                 <div class="option"><input type="radio" name="q2" value="C" id="q2c"><label for="q2c">C. 资源利用率低</label></div>
                 <div class="option"><input type="radio" name="q2" value="D" id="q2d"><label for="q2d">D. 无交互能力</label></div>
             </div>
-            <div id="result2"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    批处理系统的主要缺点是<strong>无交互能力</strong>。用户提交作业后无法与正在运行的程序进行交互，必须等待作业完成后才能看到结果。这种缺乏实时交互的特点使得批处理系统不适合需要人机对话的应用场景。
+                </div>
+            </div>
         </div>
         
         <!-- 题目3 -->
@@ -46,7 +61,12 @@
                 <div class="option"><input type="radio" name="q3" value="C" id="q3c"><label for="q3c">C. 顺序性</label></div>
                 <div class="option"><input type="radio" name="q3" value="D" id="q3d"><label for="q3d">D. 共享性</label></div>
             </div>
-            <div id="result3"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    多道程序设计的基本特征包括：<strong>制约性</strong>（程序间相互制约）、<strong>间断性</strong>（程序执行走走停停）、<strong>共享性</strong>（共享系统资源）。<em>顺序性</em>是单道程序的特征，在多道程序环境中，程序的执行是并发的，不再具有顺序性。
+                </div>
+            </div>
         </div>
         
         <!-- 题目4 -->
@@ -58,7 +78,12 @@
                 <div class="option"><input type="radio" name="q4" value="C" id="q4c"><label for="q4c">C. 单用户系统、多用户系统和批处理操作系统</label></div>
                 <div class="option"><input type="radio" name="q4" value="D" id="q4d"><label for="q4d">D. 实时操作系统、分时操作系统和多用户系统</label></div>
             </div>
-            <div id="result4"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    操作系统的基本类型主要有：<strong>批处理操作系统</strong>、<strong>分时操作系统</strong>和<strong>实时操作系统</strong>。这三种类型分别适用于不同的应用场景：批处理系统适合大量计算任务，分时系统适合多用户交互，实时系统适合对时间要求严格的控制应用。
+                </div>
+            </div>
         </div>
         
         <!-- 题目5 -->
@@ -70,7 +95,12 @@
                 <div class="option"><input type="radio" name="q5" value="C" id="q5c"><label for="q5c">C. 周转时间</label></div>
                 <div class="option"><input type="radio" name="q5" value="D" id="q5d"><label for="q5d">D. 时间片</label></div>
             </div>
-            <div id="result5"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    实时操作系统必须在<strong>被控制对象规定时间</strong>内处理来自外部的事件。这个时间限制是由具体的应用需求决定的，不同的实时系统有不同的时间要求，关键是要在规定的截止时间内完成响应。
+                </div>
+            </div>
         </div>
         
         <!-- 题目6 -->
@@ -82,7 +112,12 @@
                 <div class="option"><input type="radio" name="q6" value="C" id="q6c"><label for="q6c">C. 及时响应</label></div>
                 <div class="option"><input type="radio" name="q6" value="D" id="q6d"><label for="q6d">D. 快速处理</label></div>
             </div>
-            <div id="result6"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    实时操作系统的主要追求目标是<strong>安全可靠</strong>、<strong>及时响应</strong>和<strong>快速处理</strong>。<em>资源利用率</em>不是实时系统的主要目标，实时系统更注重的是能否在规定时间内完成任务，而不是追求最高的资源利用率。
+                </div>
+            </div>
         </div>
         
         <!-- 题目7 -->
@@ -96,7 +131,12 @@
                 <div class="option"><input type="radio" name="q7" value="C" id="q7c"><label for="q7c">C. I、V和IV</label></div>
                 <div class="option"><input type="radio" name="q7" value="D" id="q7d"><label for="q7d">D. I、III和VI</label></div>
             </div>
-            <div id="result7"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    实时操作系统适用于对时间要求严格的应用：<strong>I. 航空订票</strong>（需要快速响应用户查询）、<strong>III. 机床控制</strong>（需要精确的时间控制）、<strong>VI. 股票交易系统</strong>（需要实时处理交易）。办公自动化、AutoCAD和工资管理系统对实时性要求不高。
+                </div>
+            </div>
         </div>
         
         <!-- 题目8 -->
@@ -108,7 +148,12 @@
                 <div class="option"><input type="radio" name="q8" value="C" id="q8c"><label for="q8c">C. 分时系统的响应时间好</label></div>
                 <div class="option"><input type="radio" name="q8" value="D" id="q8d"><label for="q8d">D. 分时系统是一种多用户操作系统</label></div>
             </div>
-            <div id="result8"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    分时系统的错误说法是<strong>A. 分时系统主要用于批处理作业</strong>。分时系统是为了支持多用户交互而设计的，主要用于交互式应用，而不是批处理作业。分时系统通过时间片轮转调度，为每个用户提供快速响应。
+                </div>
+            </div>
         </div>
         
         <!-- 题目9 -->
@@ -120,7 +165,12 @@
                 <div class="option"><input type="radio" name="q9" value="C" id="q9c"><label for="q9c">C. 优先级+非抢占式调度算法</label></div>
                 <div class="option"><input type="radio" name="q9" value="D" id="q9d"><label for="q9d">D. 代码可重入</label></div>
             </div>
-            <div id="result9"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    改善分时系统响应时间的关键因素是<strong>代码可重入</strong>。可重入代码允许多个进程同时执行同一段代码的不同实例，减少了进程切换的开销，从而改善响应时间。加大时间片会增加响应时间，静态页式管理和非抢占调度都不利于快速响应。
+                </div>
+            </div>
         </div>
         
         <!-- 题目10 -->
@@ -132,7 +182,12 @@
                 <div class="option"><input type="radio" name="q10" value="C" id="q10c"><label for="q10c">C. 提高系统吞吐率</label></div>
                 <div class="option"><input type="radio" name="q10" value="D" id="q10d"><label for="q10d">D. 充分利用内存</label></div>
             </div>
-            <div id="result10"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    分时系统追求的目标是<strong>比较快速响应用户</strong>。分时系统的设计目标是为多个用户提供良好的交互体验，通过时间片轮转调度确保每个用户都能得到及时的响应，而不是单纯追求高吞吐率或设备利用率。
+                </div>
+            </div>
         </div>
         
         <!-- 题目11 -->
@@ -144,7 +199,12 @@
                 <div class="option"><input type="radio" name="q11" value="C" id="q11c"><label for="q11c">C. 用户数越多</label></div>
                 <div class="option"><input type="radio" name="q11" value="D" id="q11d"><label for="q11d">D. 用户数越少</label></div>
             </div>
-            <div id="result11"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    在分时系统中，时间片一定时，<strong>用户数越多</strong>响应时间越长。这是因为每个用户都需要等待轮到自己的时间片，用户数量增加意味着等待时间增加，从而导致响应时间变长。响应时间 = 用户数 × 时间片长度。
+                </div>
+            </div>
         </div>
         
         <!-- 题目12 -->
@@ -156,7 +216,12 @@
                 <div class="option"><input type="radio" name="q12" value="C" id="q12c"><label for="q12c">C. 50ms</label></div>
                 <div class="option"><input type="radio" name="q12" value="D" id="q12d"><label for="q12d">D. 100ms</label></div>
             </div>
-            <div id="result12"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    根据分时系统响应时间计算公式：响应时间 = 就绪进程数 × 时间片长度。要保证响应时间不超过2s，且就绪进程数为100，则时间片最大为：2s ÷ 100 = 0.02s = <strong>20ms</strong>。
+                </div>
+            </div>
         </div>
         
         <!-- 题目13 -->
@@ -168,7 +233,12 @@
                 <div class="option"><input type="radio" name="q13" value="C" id="q13c"><label for="q13c">C. 实时操作系统</label></div>
                 <div class="option"><input type="radio" name="q13" value="D" id="q13d"><label for="q13d">D. 微型计算机操作系统</label></div>
             </div>
-            <div id="result13"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    这是一道填空题的选择题形式。正确答案依次是：<strong>分时操作系统</strong>（允许多用户交互）、<strong>批处理系统</strong>（集中处理作业）、<strong>实时操作系统</strong>（及时响应控制反馈）、<strong>微型计算机操作系统</strong>（IBM-PC使用的系统类型）。
+                </div>
+            </div>
         </div>
         
         <!-- 题目14 -->
@@ -180,7 +250,12 @@
                 <div class="option"><input type="radio" name="q14" value="C" id="q14c"><label for="q14c">C. 批处理系统</label></div>
                 <div class="option"><input type="radio" name="q14" value="D" id="q14d"><label for="q14d">D. 实时系统</label></div>
             </div>
-            <div id="result14"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    只有<strong>多处理器系统</strong>可以使多个进程真正并行执行。分时系统、批处理系统和实时系统在单处理器上只能实现并发执行（通过时间片轮转），而不是真正的并行执行。并行需要多个CPU同时工作。
+                </div>
+            </div>
         </div>
         
         <!-- 题目15 -->
@@ -192,7 +267,12 @@
                 <div class="option"><input type="radio" name="q15" value="C" id="q15c"><label for="q15c">C. 分时操作系统必须在周转时间内处理完来自外部的事件</label></div>
                 <div class="option"><input type="radio" name="q15" value="D" id="q15d"><label for="q15d">D. 分时操作系统必须在调度时间内处理完来自外部的事件</label></div>
             </div>
-            <div id="result15"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    正确的说法是<strong>B. 实时操作系统须在规定时间内处理完来自外部的事件</strong>。实时系统的核心特征就是必须在截止时间内完成响应。批处理系统不强调响应时间，分时系统强调的是响应时间而不是周转时间或调度时间。
+                </div>
+            </div>
         </div>
         
         <!-- 题目16 -->
@@ -204,7 +284,12 @@
                 <div class="option"><input type="radio" name="q16" value="C" id="q16c"><label for="q16c">C. 中断功能</label></div>
                 <div class="option"><input type="radio" name="q16" value="D" id="q16d"><label for="q16d">D. 分时功能</label></div>
             </div>
-            <div id="result16"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    引入多道程序技术的前提条件之一是系统具有<strong>中断功能</strong>。中断机制使得CPU能够在程序等待I/O时切换到其他程序执行，这是实现多道程序并发执行的基础。没有中断功能，就无法实现程序间的切换。
+                </div>
+            </div>
         </div>
         
         <!-- 题目17 -->
@@ -219,7 +304,12 @@
                 <div class="option"><input type="radio" name="q17" value="C" id="q17c"><label for="q17c">C. 仅I、II</label></div>
                 <div class="option"><input type="radio" name="q17" value="D" id="q17d"><label for="q17d">D. 仅I、III</label></div>
             </div>
-            <div id="result17"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    正确的说法是<strong>A. 仅II、III</strong>。II正确：批处理系统确实分为单道和多道批处理系统；III正确：中断技术使得I/O设备可与CPU并行工作；I错误：批处理系统不允许用户与计算机直接交互，这是其主要特点。
+                </div>
+            </div>
         </div>
         
         <!-- 题目18 -->
@@ -232,7 +322,12 @@
                 <div class="option"><input type="radio" name="q18" value="C" id="q18c"><label for="q18c">C. 仅II、III</label></div>
                 <div class="option"><input type="radio" name="q18" value="D" id="q18d"><label for="q18d">D. 仅I、III、IV</label></div>
             </div>
-            <div id="result18"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    与单道程序系统相比，多道程序系统的优点是<strong>D. 仅I、III、IV</strong>：I. CPU利用率高（程序切换减少CPU空闲）、III. 系统吞吐量大（同时处理多个程序）、IV. I/O设备利用率高（I/O与CPU并行工作）。II错误：多道程序系统的系统开销更大。
+                </div>
+            </div>
         </div>
         
         <!-- 题目19 -->
@@ -246,7 +341,12 @@
                 <div class="option"><input type="radio" name="q19" value="C" id="q19c"><label for="q19c">C. 仅I、II</label></div>
                 <div class="option"><input type="radio" name="q19" value="D" id="q19d"><label for="q19d">D. I、II、III</label></div>
             </div>
-            <div id="result19"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    关于多任务操作系统，正确的说法是<strong>C. 仅I、II</strong>：I正确：多任务系统具有并发特点，在多CPU系统上还具有并行特点；II正确：需要实现对共享资源的保护以避免冲突；III错误：多任务系统不一定需要多CPU，单CPU也可以通过时间片实现多任务。
+                </div>
+            </div>
         </div>
         
         <!-- 题目20 -->
@@ -258,7 +358,12 @@
                 <div class="option"><input type="radio" name="q20" value="C" id="q20c"><label for="q20c">C. 需要实现对共享资源的管理</label></div>
                 <div class="option"><input type="radio" name="q20" value="D" id="q20d"><label for="q20d">D. 进程数越多CPU利用率越高</label></div>
             </div>
-            <div id="result20"></div>
+            <div class="explanation">
+                <div class="explanation-header">题目解析</div>
+                <div class="explanation-content">
+                    不正确的说法是<strong>D. 进程数越多CPU利用率越高</strong>。虽然多道程序可以提高CPU利用率，但进程数过多会导致系统开销增大（如进程切换开销），反而可能降低CPU利用率。存在一个最优的进程数量，超过这个数量后利用率会下降。
+                </div>
+            </div>
         </div>
     </div>
     
