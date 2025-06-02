@@ -98,6 +98,76 @@ body {
 }
 
 .back-link:hover {
+    color: var(--hover-color);
+}
+
+/* 章节选择器样式 */
+.chapter-selector {
+    background: var(--container-bg);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.chapter-selector h3 {
+    margin: 0 0 16px 0;
+    color: var(--heading-color);
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.chapter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chapter-tab {
+    background: var(--option-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.chapter-tab:hover {
+    background: var(--option-hover-bg);
+    border-color: var(--hover-color);
+    transform: translateY(-1px);
+}
+
+.chapter-tab.active {
+    background: #4299e1;
+    border-color: #4299e1;
+    color: white;
+    box-shadow: 0 2px 4px rgba(66, 153, 225, 0.3);
+}
+
+.chapter-tab.active:hover {
+    background: #3182ce;
+    border-color: #3182ce;
+}
+
+@media (max-width: 768px) {
+    .chapter-tabs {
+        flex-direction: column;
+    }
+    
+    .chapter-tab {
+        text-align: center;
+    }
+}
+
+.back-link:hover {
     color: var(--heading-color);
 }
 

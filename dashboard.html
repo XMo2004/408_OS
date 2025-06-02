@@ -64,7 +64,23 @@
             <p class="dashboard-subtitle">全面了解你的学习进度和表现</p>
         </div>
 
-        <!-- 总体统计卡片 -->
+        <!-- 章节选择器 -->
+        <div class="chapter-selector" data-aos="fade-up" data-aos-delay="50">
+            <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 6px;">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                选择章节查看统计
+            </h3>
+            <div class="chapter-tabs">
+                <button class="chapter-tab active" data-chapter="all" onclick="selectChapter('all')">全部章节</button>
+                <button class="chapter-tab" data-chapter="chapter1" onclick="selectChapter('chapter1')">第一章 计算机系统概述</button>
+                <button class="chapter-tab" data-chapter="2.1" onclick="selectChapter('2.1')">2.1 进程的基本概念</button>
+            </div>
+        </div>
+
+        <!-- 按章节统计卡片 -->
         <div class="stats-grid">
             <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-icon">
@@ -75,7 +91,7 @@
                 </div>
                 <div class="stat-content">
                     <div class="stat-number" id="total-questions">0</div>
-                    <div class="stat-label">总题数</div>
+                    <div class="stat-label">题目总数</div>
                 </div>
             </div>
             

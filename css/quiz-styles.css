@@ -1084,3 +1084,165 @@ h2 {
         margin: 8px 0;
     }
 }
+
+/* 行内代码样式 */
+code {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    color: #475569;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    position: relative;
+    display: inline-block;
+}
+
+code:hover {
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 深色主题下的行内代码 */
+[data-theme="dark"] code {
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    color: #d1d5db;
+    border-color: var(--border-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] code:hover {
+    background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 代码块样式 */
+pre {
+    background: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+pre:hover {
+    border-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] pre:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+pre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--hover-color) 0%, #667eea 100%);
+    border-radius: 12px 12px 0 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+pre:hover::before {
+    transform: scaleX(1);
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: var(--text-color);
+    font-size: 14px;
+    line-height: 1.6;
+    display: block;
+    font-weight: 400;
+}
+
+pre code:hover {
+    background: none;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 代码块语言标签 */
+pre[data-language]::after {
+    content: attr(data-language);
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: var(--explanation-bg);
+    color: var(--subheading-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--border-color);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+pre[data-language]:hover::after {
+    opacity: 1;
+}
+
+/* 代码块滚动条样式 */
+pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+    background: var(--explanation-bg);
+    border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    pre {
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 8px;
+    }
+    
+    pre code {
+        font-size: 13px;
+    }
+    
+    code {
+        font-size: 0.85em;
+        padding: 1px 4px;
+    }
+    
+    pre[data-language]::after {
+        top: 6px;
+        right: 8px;
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+}

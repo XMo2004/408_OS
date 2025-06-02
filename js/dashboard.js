@@ -2,6 +2,7 @@
 
 // 全局变量
 let progressChart, chapterChart;
+let currentSelectedChapter = 'all'; // 当前选择的章节
 let dashboardData = {
     totalQuestions: 0,
     completedQuestions: 0,
@@ -201,19 +202,92 @@ function calculateStudyStreak() {
     dashboardData.studyStreak = streak;
 }
 
+// 章节选择函数
+function selectChapter(chapter) {
+    currentSelectedChapter = chapter;
+    
+    // 更新选中状态
+    document.querySelectorAll('.chapter-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelector(`[data-chapter="${chapter}"]`).classList.add('active');
+    
+    // 更新统计数据
+    updateStatCards();
+    updateCharts();
+}
+
+// 获取当前选择章节的统计数据
+function getCurrentChapterStats() {
+    if (currentSelectedChapter === 'all') {
+        return {
+            totalQuestions: dashboardData.totalQuestions,
+            completedQuestions: dashboardData.completedQuestions,
+            correctAnswers: dashboardData.correctAnswers,
+            wrongAnswers: dashboardData.wrongAnswers,
+            accuracy: dashboardData.completedQuestions > 0 
+                ? (dashboardData.correctAnswers / dashboardData.completedQuestions * 100)
+                : 0
+        };
+    } else if (currentSelectedChapter === 'chapter1') {
+        // 合并1.1-1.4的统计数据
+        const chapter1Sections = ['1.1', '1.2', '1.3', '1.4'];
+        let totalQuestions = 0;
+        let completedQuestions = 0;
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+        
+        chapter1Sections.forEach(section => {
+            const sectionData = dashboardData.chapterStats[section];
+            if (sectionData) {
+                totalQuestions += sectionData.total;
+                completedQuestions += sectionData.completed;
+                correctAnswers += sectionData.correct;
+                wrongAnswers += sectionData.wrong;
+            }
+        });
+        
+        return {
+            totalQuestions: totalQuestions,
+            completedQuestions: completedQuestions,
+            correctAnswers: correctAnswers,
+            wrongAnswers: wrongAnswers,
+            accuracy: completedQuestions > 0 
+                ? (correctAnswers / completedQuestions * 100)
+                : 0
+        };
+    } else {
+        const chapterData = dashboardData.chapterStats[currentSelectedChapter];
+        if (!chapterData) {
+            return {
+                totalQuestions: 0,
+                completedQuestions: 0,
+                correctAnswers: 0,
+                wrongAnswers: 0,
+                accuracy: 0
+            };
+        }
+        return {
+            totalQuestions: chapterData.total,
+            completedQuestions: chapterData.completed,
+            correctAnswers: chapterData.correct,
+            wrongAnswers: chapterData.wrong,
+            accuracy: parseFloat(chapterData.accuracy)
+        };
+    }
+}
+
 // 更新统计卡片
 function updateStatCards() {
+    const stats = getCurrentChapterStats();
+    
     // 添加数字动画效果
-    animateNumber('total-questions', dashboardData.totalQuestions);
-    animateNumber('completed-questions', dashboardData.completedQuestions);
+    animateNumber('total-questions', stats.totalQuestions);
+    animateNumber('completed-questions', stats.completedQuestions);
     animateNumber('study-streak', dashboardData.studyStreak);
     
-    // 计算总正确率
-    const overallAccuracy = dashboardData.completedQuestions > 0 
-        ? (dashboardData.correctAnswers / dashboardData.completedQuestions * 100)
-        : 0;
-    
-    animatePercentage('overall-accuracy', overallAccuracy);
+    // 显示当前章节的正确率
+    animatePercentage('overall-accuracy', stats.accuracy);
 }
 
 // 数字动画
@@ -253,7 +327,13 @@ function animatePercentage(elementId, targetValue) {
 // 初始化图表
 function initializeCharts() {
     initProgressChart();
-        initChapterChart();
+    initChapterChart();
+}
+
+// 更新图表
+function updateCharts() {
+    initProgressChart();
+    initChapterChart();
 }
 
 // 初始化进度环形图
@@ -264,8 +344,9 @@ function initProgressChart() {
     }
     
     const ctx = document.getElementById('progressChart').getContext('2d');
-    const completionRate = dashboardData.totalQuestions > 0 
-        ? (dashboardData.completedQuestions / dashboardData.totalQuestions * 100)
+    const stats = getCurrentChapterStats();
+    const completionRate = stats.totalQuestions > 0 
+        ? (stats.completedQuestions / stats.totalQuestions * 100)
         : 0;
     
     progressChart = new Chart(ctx, {
@@ -312,12 +393,51 @@ function initChapterChart() {
     
     const ctx = document.getElementById('chapterChart').getContext('2d');
     
-    const labels = Object.keys(dashboardData.chapterStats).map(key => key);
-    const correctData = Object.values(dashboardData.chapterStats).map(stat => stat.correct);
-    const wrongData = Object.values(dashboardData.chapterStats).map(stat => stat.wrong);
-    const unansweredData = Object.values(dashboardData.chapterStats).map(stat => 
-        stat.total - stat.completed
-    );
+    let labels, correctData, wrongData, unansweredData;
+    
+    if (currentSelectedChapter === 'all') {
+        // 显示所有章节的对比
+        labels = Object.keys(dashboardData.chapterStats).map(key => key);
+        correctData = Object.values(dashboardData.chapterStats).map(stat => stat.correct);
+        wrongData = Object.values(dashboardData.chapterStats).map(stat => stat.wrong);
+        unansweredData = Object.values(dashboardData.chapterStats).map(stat => 
+            stat.total - stat.completed
+        );
+    } else if (currentSelectedChapter === 'chapter1') {
+        // 显示第一章各小节的详细数据
+        const chapter1Sections = ['1.1', '1.2', '1.3', '1.4'];
+        labels = chapter1Sections;
+        correctData = [];
+        wrongData = [];
+        unansweredData = [];
+        
+        chapter1Sections.forEach(section => {
+            const sectionData = dashboardData.chapterStats[section];
+            if (sectionData) {
+                correctData.push(sectionData.correct);
+                wrongData.push(sectionData.wrong);
+                unansweredData.push(sectionData.total - sectionData.completed);
+            } else {
+                correctData.push(0);
+                wrongData.push(0);
+                unansweredData.push(getChapterQuestionCount(section));
+            }
+        });
+    } else {
+        // 显示单个章节的详细数据
+        const chapterData = dashboardData.chapterStats[currentSelectedChapter];
+        if (chapterData) {
+            labels = [currentSelectedChapter];
+            correctData = [chapterData.correct];
+            wrongData = [chapterData.wrong];
+            unansweredData = [chapterData.total - chapterData.completed];
+        } else {
+            labels = [currentSelectedChapter];
+            correctData = [0];
+            wrongData = [0];
+            unansweredData = [getChapterQuestionCount(currentSelectedChapter)];
+        }
+    }
     
     chapterChart = new Chart(ctx, {
         type: 'bar',
