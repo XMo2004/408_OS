@@ -18,7 +18,8 @@ const chapterConfig = {
     '1.1': '操作系统基本概念',
     '1.2': '操作系统发展历程',
     '1.3': '操作系统运行机制',
-    '1.4': '操作系统体系结构'
+    '1.4': '操作系统体系结构',
+    '2.1': '进程的基本概念'
 };
 
 // 页面加载时初始化
@@ -131,7 +132,8 @@ function getChapterQuestionCount(chapter) {
         '1.1': 14,  // 实际统计：14题
         '1.2': 20,  // 实际统计：20题
         '1.3': 33,  // 实际统计：33题
-        '1.4': 21   // 实际统计：21题
+        '1.4': 21,  // 实际统计：21题
+        '2.1': 75   // 实际统计：75题
     };
     return counts[chapter] || 0;
 }
@@ -208,7 +210,7 @@ function updateStatCards() {
     
     // 计算总正确率
     const overallAccuracy = dashboardData.completedQuestions > 0 
-        ? (dashboardData.correctAnswers / dashboardData.completedQuestions * 100).toFixed(1)
+        ? (dashboardData.correctAnswers / dashboardData.completedQuestions * 100)
         : 0;
     
     animatePercentage('overall-accuracy', overallAccuracy);
@@ -815,17 +817,112 @@ function exportWrongQuestions() {
         return;
     }
     
-    const wrongQuestionsText = dashboardData.wrongQuestions.map(q => 
-        `${q.chapter} ${q.chapterName} - 第${q.questionNum}题\n你的答案: ${q.selected} | 正确答案: ${q.correct}\n`
-    ).join('\n');
+    // 获取详细的错题信息
+    getDetailedWrongQuestions().then(detailedQuestions => {
+        const wrongQuestionsText = detailedQuestions.map(q => {
+            let text = `${q.chapter} ${q.chapterName} - 第${q.questionNum}题\n`;
+            text += `题干: ${q.questionText}\n`;
+            text += `选项:\n${q.options.join('\n')}\n`;
+            text += `你的答案: ${q.selected} | 正确答案: ${q.correct}\n`;
+            if (q.explanation) {
+                text += `解析: ${q.explanation}\n`;
+            }
+            text += '\n' + '='.repeat(50) + '\n\n';
+            return text;
+        }).join('');
+        
+        const blob = new Blob([wrongQuestionsText], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `错题集_${new Date().toLocaleDateString()}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }).catch(error => {
+        console.error('导出错题失败:', error);
+        showModal('导出失败', '获取题目详细信息时出现错误，请稍后重试。');
+    });
+}
+
+// 获取详细的错题信息
+async function getDetailedWrongQuestions() {
+    const detailedQuestions = [];
     
-    const blob = new Blob([wrongQuestionsText], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `错题集_${new Date().toLocaleDateString()}.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
+    for (const wrongQ of dashboardData.wrongQuestions) {
+        try {
+            const questionDetails = await fetchQuestionDetails(wrongQ.chapter, wrongQ.questionNum);
+            detailedQuestions.push({
+                ...wrongQ,
+                questionText: questionDetails.questionText,
+                options: questionDetails.options,
+                explanation: questionDetails.explanation
+            });
+        } catch (error) {
+            console.error(`获取题目 ${wrongQ.chapter}-${wrongQ.questionNum} 详细信息失败:`, error);
+            // 如果获取失败，使用基本信息
+            detailedQuestions.push({
+                ...wrongQ,
+                questionText: '题目内容获取失败',
+                options: [],
+                explanation: '解析内容获取失败'
+            });
+        }
+    }
+    
+    return detailedQuestions;
+}
+
+// 获取单个题目的详细信息
+async function fetchQuestionDetails(chapter, questionNum) {
+    return new Promise((resolve, reject) => {
+        // 创建一个隐藏的iframe来加载对应的HTML文件
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = `html/${chapter}.html`;
+        
+        iframe.onload = function() {
+            try {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const questions = iframeDoc.querySelectorAll('.question');
+                
+                if (questions.length >= questionNum) {
+                    const questionDiv = questions[questionNum - 1];
+                    
+                    // 获取题干
+                    const questionNumberDiv = questionDiv.querySelector('.question-number');
+                    const questionText = questionNumberDiv ? questionNumberDiv.textContent.trim() : '题目内容获取失败';
+                    
+                    // 获取选项
+                    const optionDivs = questionDiv.querySelectorAll('.option label');
+                    const options = Array.from(optionDivs).map(label => label.textContent.trim());
+                    
+                    // 获取解析
+                    const explanationDiv = questionDiv.querySelector('.explanation-content');
+                    const explanation = explanationDiv ? explanationDiv.textContent.trim() : '暂无解析';
+                    
+                    resolve({
+                        questionText,
+                        options,
+                        explanation
+                    });
+                } else {
+                    reject(new Error(`题目 ${questionNum} 不存在`));
+                }
+            } catch (error) {
+                reject(error);
+            } finally {
+                // 清理iframe
+                document.body.removeChild(iframe);
+            }
+        };
+        
+        iframe.onerror = function() {
+            document.body.removeChild(iframe);
+            reject(new Error(`无法加载文件 ${chapter}.html`));
+        };
+        
+        document.body.appendChild(iframe);
+    });
 }
 
 // 导出数据
