@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>（三）操作系统的运行环境 - 操作系统选择题</title>
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 深色模式</button>
+        <a href="../index.html" class="back-link">返回主页</a>
+        
+        <h1>（三）操作系统的运行环境</h1>
+        
+        <h2>一、单项选择题</h2>
+        
+        <div class="question">
+            <div class="question-number">1. 下列关于操作系统的说法中，错误的是 (     )</div>
+            <div class="question-text">
+                I. 在通用操作系统管理下的计算机上运行程序，需要向操作系统预订运行时间<br>
+                II. 在通用操作系统管理下的计算机上运行程序，需要确定起始地址，并从这个地址开始执行<br>
+                III. 操作系统需要提供高级程序设计语言的编译器<br>
+                IV. 管理计算机系统资源是操作系统关心的主要问题
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q1" value="A" id="q1a">
+                    <label for="q1a">A. I</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" value="B" id="q1b">
+                    <label for="q1b">B. I、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" value="C" id="q1c">
+                    <label for="q1c">C. II、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" value="D" id="q1d">
+                    <label for="q1d">D. I、II、III、IV</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                选项 I 错误：通用操作系统使用时间片轮转调度算法，用户运行程序并不需要预先预订运行时间。选项 II 正确：操作系统执行程序时，必须从起始地址开始执行。选项 III 错误：编译器是操作系统的上层软件，不是操作系统需要提供的功能。选项 IV 正确：操作系统是计算机资源的管理者，管理计算机系统资源是操作系统关心的主要问题。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">2. 下列说法中，正确的是 (     )</div>
+            <div class="question-text">
+                I. 批处理的主要缺点是需要大量内存<br>
+                II. 当计算机提供了核心态和用户态时，输入/输出指令必须在核心态下执行<br>
+                III. 操作系统中采用多道程序设计技术的最主要原因是提高CPU和外部设备的可靠性<br>
+                IV. 操作系统中，通道技术是一种硬件技术
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q2" value="A" id="q2a">
+                    <label for="q2a">A. I、II</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" value="B" id="q2b">
+                    <label for="q2b">B. I、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" value="C" id="q2c">
+                    <label for="q2c">C. II、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" value="D" id="q2d">
+                    <label for="q2d">D. II、III、IV</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                选项 I 错误：批处理的主要缺点是缺少交互性。批处理系统的主要缺点是常考点，读者对此要非常敏感。选项 II 正确：输入/输出指令属于特权指令，只能由操作系统使用，因此必须在内核态下执行。选项 III 错误：多道性是为了提高系统利用率和吞吐量而提出的。选项 IV 正确：I/O 通道实际上是一种特殊的处理器，它具有执行 I/O 指令的能力，并通过执行通道程序来控制 I/O 操作。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">3. 下列关于系统调用的说法中，正确的是 (     )</div>
+            <div class="question-text">
+                I. 用户程序使用系统调用命令，该命令经过编译后形成若干参数和陷入指令<br>
+                II. 用户程序使用系统调用命令，该命令经过编译后形成若干参数和屏蔽中断指令<br>
+                III. 用户程序创建一个新进程，需使用操作系统提供的系统调用接口<br>
+                IV. 当操作系统完成用户请求的系统调用功能后，应使CPU从内核态转到用户态
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q3" value="A" id="q3a">
+                    <label for="q3a">A. I、II</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" value="B" id="q3b">
+                    <label for="q3b">B. III、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" value="C" id="q3c">
+                    <label for="q3c">C. I、III、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" value="D" id="q3d">
+                    <label for="q3d">D. II、III、IV</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                系统调用需要触发陷入指令，如基于 x 86 的 Linux 系统，该指令为 int 0x80 或 sysenter，选项 I 正确。程序设计无法形成屏蔽中断指令，选项 II 错误。用户程序通过系统调用进行进程控制，选项 III 正确。执行系统调用时 CPU 状态要从用户态转到内核态，这是通过中断来实现的，当系统调用返回后，继续执行用户程序，同时 CPU 状态也从内核态转到用户态，选项 IV 正确。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">4. (     ) 是操作系统必须提供的功能。</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q4" value="A" id="q4a">
+                    <label for="q4a">A. 图形用户界面 (GUI)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" value="B" id="q4b">
+                    <label for="q4b">B. 为进程提供系统调用命令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" value="C" id="q4c">
+                    <label for="q4c">C. 中断处理</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" value="D" id="q4d">
+                    <label for="q4d">D. 编译源程序</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                中断是操作系统必须提供的功能，因为计算机的各种错误都需要中断处理，内核态与用户态切换也需要中断处理。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">5. CPU执行的指令被分为两类，其中有一类称为特权指令，它只允许 (     ) 使用。</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q5" value="A" id="q5a">
+                    <label for="q5a">A. 管理员</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" value="B" id="q5b">
+                    <label for="q5b">B. 联机用户</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" value="C" id="q5c">
+                    <label for="q5c">C. 目标程序</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" value="D" id="q5d">
+                    <label for="q5d">D. 操作系统</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：D</strong><br>
+                内核可以执行CPU能执行的任何指令，用户程序只能执行除特权指令之外的指令。因此特权指令只能由内核即操作系统使用。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">6. 在中断发生后，进入中断处理的程序属于 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q6" value="A" id="q6a">
+                    <label for="q6a">A. 用户程序</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" value="B" id="q6b">
+                    <label for="q6b">B. 可能是用户程序，也可能是OS程序</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" value="C" id="q6c">
+                    <label for="q6c">C. 操作系统程序</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" value="D" id="q6d">
+                    <label for="q6d">D. 单独的程序，既不是用户程序也不是OS程序</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                中断处理程序是 OS 专门为处理中断事件而设计的程序。中断发生时，若被中断的是用户程序，则 CPU 将从用户态转入内核态，在内核态下进行中断的处理；若被中断的是低级中断，则 CPU 仍保持在内核态。被中断的程序可能是用户程序，但中断的处理程序一定是 OS 程序。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">7. CPU的状态分为用户态和内核态，从用户态转换到内核态的唯一途径是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q7" value="A" id="q7a">
+                    <label for="q7a">A. 修改程序状态字指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" value="B" id="q7b">
+                    <label for="q7b">B. 中断屏蔽</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" value="C" id="q7c">
+                    <label for="q7c">C. 中断</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" value="D" id="q7d">
+                    <label for="q7d">D. 中断处理程序</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                CPU 通过程序状态字寄存器中的某个位来标志当前的状态，但是修改程序状态字的指令本身就属于特权指令，不能在用户态下执行。当 CPU 执行到一条访管指令或陷阱指令时，会引起访管中断或陷阻中断，CPU 会保存断点和其他上下文环境，然后切换到内核态。也就是说，从用户态转换到内核态，不是通过指令来修改 CPU 的状态标志位的，而是由 CPU 在中断时自动完成的。中断处理程序一般在内核态执行，因此无法完成"转换成内核态"这一任务。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">8. 下列指令中，可以在用户态执行的是 (     )</div>
+            <div class="question-text">
+                I. 置时钟指令<br>
+                II. 停机指令<br>
+                III. 存数指令<br>
+                IV. 寄存器清零指令
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q8" value="A" id="q8a">
+                    <label for="q8a">A. I、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" value="B" id="q8b">
+                    <label for="q8b">B. III、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" value="C" id="q8c">
+                    <label for="q8c">C. II、III、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" value="D" id="q8d">
+                    <label for="q8d">D. II、III</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                直接管理系统资源的指令（如设置时钟，启动/关闭硬件设备，切换进程，设置中断等），系统状态修改指令（如修改中断向量表，切换 CPU 的运行模式等），系统控制指令（如停机指令，重启指令等），都属于特权指令，必须在内核态执行。普通的数据处理指令，流程控制指令，读操作指令都不会影响系统的安全和整体状态，可以在用户态执行。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">9. 下列指令中，必须在内核态执行的是 (     )</div>
+            <div class="question-text">
+                I. 陷入指令<br>
+                II. 系统调用指令<br>
+                III. 开中断指令<br>
+                IV. 转移指令<br>
+                V. 中断屏蔽字设置指令
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q9" value="A" id="q9a">
+                    <label for="q9a">A. I、II、III、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" value="B" id="q9b">
+                    <label for="q9b">B. II、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" value="C" id="q9c">
+                    <label for="q9c">C. II、III、V</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" value="D" id="q9d">
+                    <label for="q9d">D. I、IV</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                用户程序通过陷入指令让 CPU 模式从用户态转入内核态，因此在用户态执行。虽然调用的发生可能在用户态（注意区分调用和执行），但是系统调用指令必然在内核态执行。开中断指令和关中断指令都属于特权指令，能够影响到系统的运行，必须在内核态执行。无论是分支跳转指令还是无条件转移指令，都属于普通的程序流程控制指令，在用户态执行。中断屏蔽字寄存器属于中断控制器的一部分，而中断控制器是属于 I/O 接口的，因此设置中断屏蔽字寄存器的操作就相当于对 I/O 接口中的 I/O 端口进行设置，属于 I/O 指令，必须在内核态执行。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">10. 下列程序中，必须在内核态执行的是 (     )</div>
+            <div class="question-text">
+                I. 磁盘调度程序<br>
+                II. 中断处理程序<br>
+                III. 设备驱动程序<br>
+                IV. 操作系统初始化程序
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q10" value="A" id="q10a">
+                    <label for="q10a">A. I、II、III、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" value="B" id="q10b">
+                    <label for="q10b">B. I、II、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" value="C" id="q10c">
+                    <label for="q10c">C. I、II、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" value="D" id="q10d">
+                    <label for="q10d">D. I、III</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：A</strong><br>
+                磁盘调度程序控制磁头的运行，和硬件密切相关，运行在内核态。中断处理程序在中断发生后由操作系统内核调用，运行在内核态。设备驱动程序用于和硬件设备进行通信，运行在内核态。操作系统初始化程序负责初始化系统资源，设置环境，加载驱动程序等，运行在内核态。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">11. 当CPU处于内核态时，它可以执行的指令是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q11" value="A" id="q11a">
+                    <label for="q11a">A. 只有特权指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" value="B" id="q11b">
+                    <label for="q11b">B. 只有非特权指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" value="C" id="q11c">
+                    <label for="q11c">C. 只有访管指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" value="D" id="q11d">
+                    <label for="q11d">D. 除访管指令之外的全部指令</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：D</strong><br>
+                访管指令（trap指令）是一条在用户态下执行的指令。用户程序在用户态下要请求操作系统内核提供服务，就有意识地使用访管指令来引起访管中断，从而将控制权交给内核。在内核态，CPU可以执行除访管指令之外的任何指令。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">12. 下列中断事件中，能引起外部中断的事件是 (     )</div>
+            <div class="question-text">
+                I. 时钟中断<br>
+                II. 访管中断<br>
+                III. 缺页中断
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q12" value="A" id="q12a">
+                    <label for="q12a">A. I</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" value="B" id="q12b">
+                    <label for="q12b">B. III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" value="C" id="q12c">
+                    <label for="q12c">C. I和II</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" value="D" id="q12d">
+                    <label for="q12d">D. II和III</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：A</strong><br>
+                外部中断是由 CPU 外部的事件引起的，如 I/O 设备的请求，时钟信号等。内部中断（也称异常）是由 CPU 内部的事件引起的，如访管指令（trap 指令），缺页异常等。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">13. 下列关于库函数和系统调用的说法中，不正确的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q13" value="A" id="q13a">
+                    <label for="q13a">A. 库函数运行在用户态，系统调用运行在内核态</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" value="B" id="q13b">
+                    <label for="q13b">B. 使用库函数时开销较小，使用系统调用时开销较大</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" value="C" id="q13c">
+                    <label for="q13c">C. 库函数不方便替换，系统调用通常很方便被替换</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" value="D" id="q13d">
+                    <label for="q13d">D. 库函数可以很方便地调试，而系统调用很麻烦</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                库函数是指被封装在库文件中的可复用的代码块，运行在用户态；而系统调用是面向硬件的，运行在内核态，是操作系统为用户提供的接口。库函数可以很方便地调试，而系统调用很麻烦，因为它运行在内核态。库函数可以很方便地替换，而系统调用通常不可替换。库函数属于过程调用，开销较小；系统调用需要在用户空间和内核空间中进行上下文切换，开销较大。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">14. 下列关于系统调用和一般过程调用的说法中，正确的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q14" value="A" id="q14a">
+                    <label for="q14a">A. 两者都需要将当前CPU中的PSW和PC的值压栈，以保存现场信息</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" value="B" id="q14b">
+                    <label for="q14b">B. 系统调用的被调用过程一定运行在内核态</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" value="C" id="q14c">
+                    <label for="q14c">C. 一般过程调用的被调用过程一定运行在用户态</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" value="D" id="q14d">
+                    <label for="q14d">D. 两者的调用过程与被调用过程一定都运行在用户态</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                系统调用需要保存 PSW 和 PC 的值，一般过程调用只需保存 PC 的值，选项 A 错误。系统调用的被调用过程是操作系统中的程序，是系统级程序，必须运行在内核态，选项 B 正确。一般过程调用的被调用程序与调用程序运行在同一个状态，可能是系统态，也可能是用户态，选项 C 和 D 错误。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">15. 用户在程序中试图读某文件的第100个逻辑块，使用操作系统提供的 (     ) 接口。</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q15" value="A" id="q15a">
+                    <label for="q15a">A. 系统调用</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q15" value="B" id="q15b">
+                    <label for="q15b">B. 键盘命令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q15" value="C" id="q15c">
+                    <label for="q15c">C. 原语</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q15" value="D" id="q15d">
+                    <label for="q15d">D. 图形用户接口</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：A</strong><br>
+                操作系统通过系统调用向用户程序提供服务，文件I/O需要在内核态运行。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">16. 【2011统考真题】下列选项中，在用户态执行的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q16" value="A" id="q16a">
+                    <label for="q16a">A. 命令解释程序</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q16" value="B" id="q16b">
+                    <label for="q16b">B. 缺页处理程序</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q16" value="C" id="q16c">
+                    <label for="q16c">C. 进程调度程序</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q16" value="D" id="q16d">
+                    <label for="q16d">D. 时钟中断处理程序</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：A</strong><br>
+                缺页处理和时钟中断都属于中断，在内核态执行；进程调度是操作系统内核进程，无须用户干预，在内核态执行；命令解释程序属于命令接口，是面对用户的，在用户态执行。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">17. 【2012统考真题】下列选项中，不可能在用户态发生的事件是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q17" value="A" id="q17a">
+                    <label for="q17a">A. 系统调用</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q17" value="B" id="q17b">
+                    <label for="q17b">B. 外部中断</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q17" value="C" id="q17c">
+                    <label for="q17c">C. 进程切换</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q17" value="D" id="q17d">
+                    <label for="q17d">D. 缺页</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                本题的关键是对"在用户态发生"（注意与"在用户态执行"区分）的理解。对于选项 A，系统调用是操作系统提供给用户程序的接口，系统调用发生在用户态，被调用程序在内核态下执行。对于选项 B，外部中断是用户态到内核态的"门"，也发生在用户态，在内核态完成中断处理过程。对于选项 C，进程切换属于系统调用执行过程中的事件，只能发生在内核态；对于选项 D，缺页产生后，在用户态发生缺页中断，然后进入内核态执行缺页中断服务程序。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">18. 【2012统考真题】中断处理和子程序调用都需要压栈以保护现场，中断处理一定会保存而子程序调用不需要保存其内容的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q18" value="A" id="q18a">
+                    <label for="q18a">A. 程序计数器</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q18" value="B" id="q18b">
+                    <label for="q18b">B. 程序状态字寄存器</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q18" value="C" id="q18c">
+                    <label for="q18c">C. 通用数据寄存器</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q18" value="D" id="q18d">
+                    <label for="q18d">D. 通用地址寄存器</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                子程序调用不改变程序的状态，因为子程序调用是编译器可控的流程，而中断不是。下面以程序为例加以说明。该程序通常包含一条测试指令，以及一条根据标志位决定是否需要跳转来调用子程序的指令。编译器不在这两条指令中间插入任何子程序调用代码，因此标志位不变，但中断却随时可能发生，导致标志位改变。具体地说，执行时，会进行a - b操作，并生成相应的标志位，进而根据标志位来判断是否发生跳转。假设刚好在生成相应的标志位后发生了中断，若不保存 PSW 的内容，则后续根据标志位来进行跳转的流程就可能发生错误。但是，若进行了子程序调用，则说明已经根据 a - b的标志位进行了跳转，此时 PSW 的内容已无意义而无须保存。综上所述，中断处理和子程序调用都有可能使 PSW 的内容发生变化，但中断处理程序执行完返回后，可能需要用到 PSW 原来的内容，子程序执行完返回后，一定不需要用到 PSW原来的内容，因此选择选项 B。选项 A 都会保存，选项 C 和 D 不一定会保存。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">19. 【2013统考真题】下列选项中，会导致用户进程从用户态切换到内核态的操作是 (     )</div>
+            <div class="question-text">
+                I. 整数除以零<br>
+                II. sin()函数调用<br>
+                III. read系统调用
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q19" value="A" id="q19a">
+                    <label for="q19a">A. 仅I、II</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q19" value="B" id="q19b">
+                    <label for="q19b">B. 仅I、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q19" value="C" id="q19c">
+                    <label for="q19c">C. 仅II、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q19" value="D" id="q19d">
+                    <label for="q19d">D. I、II和III</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                整数除以零是非法操作，因此 CPU 会检测到异常，并切换到内核态进行异常处理。 sin ()函数是 C 语言中的普通运算类库函数，且不会引发系统调用，在用户态执行。在用户态触发 read 系统调用时，会通过 trap 指令陷入内核态，由 CPU 执行相应的系统调用服务例程。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">20. 【2014统考真题】下列指令中，不能在用户态执行的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q20" value="A" id="q20a">
+                    <label for="q20a">A. trap指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q20" value="B" id="q20b">
+                    <label for="q20b">B. 跳转指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q20" value="C" id="q20c">
+                    <label for="q20c">C. 压栈指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q20" value="D" id="q20d">
+                    <label for="q20d">D. 关中断指令</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：D</strong><br>
+                trap 指令，跳转指令和压栈指令均可以在用户态执行，其中 trap 指令负责由用户态转换为内核态。关中断指令为特权指令，必须在内核态才能执行。注意，在操作系统中，关中断指令是权限非常大的指令，因为中断是现代操作系统正常运行的核心保障之一，能把它关掉，说明执行这条指令的一定是权限非常大的机构（内核态）。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">21. 【2015统考真题】处理外部中断时，应该由操作系统保存的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q21" value="A" id="q21a">
+                    <label for="q21a">A. 程序计数器 (PC) 的内容</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q21" value="B" id="q21b">
+                    <label for="q21b">B. 通用寄存器的内容</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q21" value="C" id="q21c">
+                    <label for="q21c">C. 块表 (TLB) 中的内容</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q21" value="D" id="q21d">
+                    <label for="q21d">D. Cache中的内容</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                外部中断处理过程，PC 值由中断隐指令自动保存，而通用寄存器内容由操作系统保存。快表（TLB）和 Cache 中的内容在外部中断处理过程中通常无须保存，直接置有效位为 0 即可。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">22. 【2015统考真题】假定下列指令已装入指令寄存器，则执行时不可能导致CPU从用户态变为内核态(系统态)的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q22" value="A" id="q22a">
+                    <label for="q22a">A. DIV R0,R1                ; (R0)/(R1)→R0</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q22" value="B" id="q22b">
+                    <label for="q22b">B. INT n                     ; 产生软中断</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q22" value="C" id="q22c">
+                    <label for="q22c">C. NOT R0                    ; 寄存器R0的内容取非</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q22" value="D" id="q22d">
+                    <label for="q22d">D. MOV R0,addr              ; 把地址addr处的内存数据放入寄存器R0</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                部分指令可能出现异常，从而转到内核态。指令 A 有除零异常的可能。指令 B 为软中断指令，用于触发一个中断并跳转到相应的中断处理程序， n 表示中断向量号，使用软中断可以在用户态和内核态之间切换，以实现系统调用。指令 D 有缺页异常的可能。指令 C 不会发生异常。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">23. 【2016统考真题】异常是指令执行过程中在处理器内部发生的特殊事件，中断是来自处理器外部的请求事件。下列关于中断或异常情况的叙述中，错误的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q23" value="A" id="q23a">
+                    <label for="q23a">A. "访存时缺页"属于中断</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q23" value="B" id="q23b">
+                    <label for="q23b">B. "整数除以0"属于异常</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q23" value="C" id="q23c">
+                    <label for="q23c">C. "DMA传送结束"属于中断</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q23" value="D" id="q23d">
+                    <label for="q23d">D. "存储保护错"属于异常</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：A</strong><br>
+                中断是指来自 CPU 执行指令以外事件，如设备发出的 I/O 结束中断，表示设备输入/输出已完成，希望处理机能够向设备发出下一个输入/输出请求，同时让完成输入/输出后的程序继续运行。异常也称内中断，指源自 CPU 执行指令内部的事件。选项 A 错误。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">24. 【2017统考真题】执行系统调用的过程包括如下主要操作，正确的执行顺序是 (     )</div>
+            <div class="question-text">
+                ①返回用户态；<br>
+                ②执行陷入(trap)指令；<br>
+                ③传递系统调用参数；<br>
+                ④执行相应的服务程序
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q24" value="A" id="q24a">
+                    <label for="q24a">A. ②→③→①→④</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q24" value="B" id="q24b">
+                    <label for="q24b">B. ②→④→③→①</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q24" value="C" id="q24c">
+                    <label for="q24c">C. ③→②→④→①</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q24" value="D" id="q24d">
+                    <label for="q24d">D. ③→④→②→①</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                执行系统调用的过程：正在运行的进程先传递系统调用参数，然后由陷入（trap）指令负责将 CPU 模式从用户态转换为内核态，并将返回地址压入堆栈以备后用，接下来 CPU 执行相应的内核态服务程序，最后返回用户态。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">25. 【2018统考真题】定时器产生时钟中断后，由时钟中断服务程序更新的部分内容是 (     )</div>
+            <div class="question-text">
+                I. 内核中时钟变量的值<br>
+                II. 当前进程占用CPU的时间<br>
+                III. 当前进程在时间片内的剩余执行时间
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q25" value="A" id="q25a">
+                    <label for="q25a">A. 仅I、II</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q25" value="B" id="q25b">
+                    <label for="q25b">B. 仅II、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q25" value="C" id="q25c">
+                    <label for="q25c">C. 仅I、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q25" value="D" id="q25d">
+                    <label for="q25d">D. I、II、III</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：D</strong><br>
+                时钟中断的主要工作是处理和时间有关的信息及决定是否执行调度程序。和时间有关的所有信息包括系统时间，进程的时间片，延时，使用 CPU 的时间，一各种定时器。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">26. 【2019统考真题】下列关于系统调用的叙述中，正确的是 (     )</div>
+            <div class="question-text">
+                I. 在执行系统调用服务程序的过程中，CPU处于内核态<br>
+                II. 操作系统通过提供系统调用避免用户程序直接访问外设<br>
+                III. 不同的操作系统为应用程序提供了统一的系统调用接口<br>
+                IV. 系统调用是操作系统内核为应用程序提供服务的接口
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q26" value="A" id="q26a">
+                    <label for="q26a">A. 仅I、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q26" value="B" id="q26b">
+                    <label for="q26b">B. 仅II、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q26" value="C" id="q26c">
+                    <label for="q26c">C. 仅I、II、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q26" value="D" id="q26d">
+                    <label for="q26d">D. 仅I、III、IV</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                用户可以在用户态调用操作系统的服务，但执行具体的系统调用服务程序是处于内核态的，选项 I 正确；设备管理属于操作系统的职能之一，包括对输入/输出设备的分配，初始化，维护等，用户程序需要通过系统调用使用操作系统的设备管理服务，选项 II 正确；操作系统不同，底层逻辑，实现方式均不相同，为应用程序提供的系统调用接口也不同，选项 III 错误；系统调用是用户在程序中调用操作系统提供的子功能，选项 IV 正确。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">27. 【2020统考真题】下列与中断相关的操作中，由操作系统完成的是 (     )</div>
+            <div class="question-text">
+                I. 保存被中断程序的中断点<br>
+                II. 提供中断服务<br>
+                III. 初始化中断向量表<br>
+                IV. 保存中断屏蔽字
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q27" value="A" id="q27a">
+                    <label for="q27a">A. 仅I、II</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q27" value="B" id="q27b">
+                    <label for="q27b">B. 仅I、II、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q27" value="C" id="q27c">
+                    <label for="q27c">C. 仅I、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q27" value="D" id="q27d">
+                    <label for="q27d">D. 仅 II、III、 IV</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：D</strong><br>
+                当 CPU 检测到中断信号后，由硬件自动保存被中断程序的断点［程序计数器（PC）和程序状态字寄存器（PSW）］，选项 I 错误。之后，硬件找到该中断信号对应的中断向量，中断向量指明中断服务程序入口地址（各中断向量统一存放在中断向量表中，该表由操作系统初始化，选项 III 正确）。接下来开始执行中断服务程序，保存中断屏蔽字，保存各通用寄存器的值，并提供与中断信号对应的中断服务，中断服务程序属于操作系统内核，选项 II 和 IV 正确。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">28. 【2021统考真题】下列指令中，只能在内核态执行的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q28" value="A" id="q28a">
+                    <label for="q28a">A. trap指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q28" value="B" id="q28b">
+                    <label for="q28b">B. I/O指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q28" value="C" id="q28c">
+                    <label for="q28c">C. 数据传送指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q28" value="D" id="q28d">
+                    <label for="q28d">D. 设置断点指令</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                在内核态下，CPU 可执行任何指令，在用户态下 CPU 只能执行非特权指令，而特权指令只能在内核态下执行。常见的特权指令有：（1）有关对 I/O 设备操作的指令；（2）有关访问程序状态的指令；（3）存取特殊寄存器的指令；（4）其他指令。选项 A，C 和 D 都是提供给用户使用的指令，可以在用户态执行，只是可能使 CPU 从用户态切换到内核态。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">29. 【2021统考真题】下列选项中，通过系统调用完成的操作是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q29" value="A" id="q29a">
+                    <label for="q29a">A. 页置换</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q29" value="B" id="q29b">
+                    <label for="q29b">B. 进程调度</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q29" value="C" id="q29c">
+                    <label for="q29c">C. 创建新进程</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q29" value="D" id="q29d">
+                    <label for="q29d">D. 生成随机整数</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                系统调用是由用户进程发起的，请求操作系统的服务。对于选项 A，当内存中的空闲页框不够时，操作系统会将某些页面调出，并将要访问的页面调入，这个过程完全由操作系统完成，不涉及系统调用。对于选项 B，进程调度完全由操作系统完成，无法通过系统调用完成。对于选项 C，创建新进程可以通过系统调用来完成，如 Linux 中通过 fork 系统调用来创建子进程。对于选项 D，生成随机数是普通的函数调用，不涉及请求操作系统的服务，如 C 语言的 random（）函数。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">30. 【2022统考真题】下列关于CPU模式的叙述中，正确的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q30" value="A" id="q30a">
+                    <label for="q30a">A. CPU处于用户态时只能执行特权指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q30" value="B" id="q30b">
+                    <label for="q30b">B. CPU处于内核态时只能执行特权指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q30" value="C" id="q30c">
+                    <label for="q30c">C. CPU处于用户态时只能执行非特权指令</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q30" value="D" id="q30d">
+                    <label for="q30d">D. CPU处于内核态时只能执行非特权指令</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：C</strong><br>
+                CPU 在用户态时只能执行非特权指令，在内核态时可以执行特权指令和非特权指令。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">31. 【2022统考真题】执行系统调用的过程涉及下列操作，其中由操作系统完成的是 (     )</div>
+            <div class="question-text">
+                I. 保存断点和程序状态字<br>
+                II. 保存通用寄存器的内容<br>
+                III. 执行系统调用服务例程<br>
+                IV. 将CPU模式改为内核态
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q31" value="A" id="q31a">
+                    <label for="q31a">A. 仅I、II</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q31" value="B" id="q31b">
+                    <label for="q31b">B. 仅II、III</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q31" value="C" id="q31c">
+                    <label for="q31c">C. 仅II、IV</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q31" value="D" id="q31d">
+                    <label for="q31d">D. 仅II、III、IV</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：B</strong><br>
+                发生系统调用时，CPU 通过执行软中断指令将 CPU 的运行状态从用户态切换到内核态，这个过程与中断和异常的响应过程相同，由硬件负责保存断点和程序状态字，并将 CPU 模式改为内核态。然后，执行操作系统内核的系统调用入口程序，该内核程序负责保存通用寄存器的内容，再调用执行特定的系统调用服务例程。综上，选项 I，IV 由硬件完成，选项 II，III 由操作系统完成。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">32. 【2023统考真题】在操作系统内核中，中断向量表适合采用的数据结构是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q32" value="A" id="q32a">
+                    <label for="q32a">A. 数组</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q32" value="B" id="q32b">
+                    <label for="q32b">B. 队列</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q32" value="C" id="q32c">
+                    <label for="q32c">C. 单向链表</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q32" value="D" id="q32d">
+                    <label for="q32d">D. 双向链表</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：A</strong><br>
+                本题考查了＂计算机组成原理＂的考点，且综合了＂数据结构＂的内容。中断向量表用于存放中断处理程序的入口地址，CPU 通过查询得到中断类型号，然后据此计算可以得到对应中断服务程序的入口地址在中断向量表的位置，采用数组作为中断向量表的存储结构，可实现时间复杂度为  的快速访问，从而提高中断处理的效率。
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">33. 【2024统考真题】下列关于中断、异常和系统调用的叙述中，错误的是 (     )</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q33" value="A" id="q33a">
+                    <label for="q33a">A. 中断或异常发生时，CPU处于内核态</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q33" value="B" id="q33b">
+                    <label for="q33b">B. 每个系统调用都有对应的内核服务例程</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q33" value="C" id="q33c">
+                    <label for="q33c">C. 中断处理程序开始执行时，CPU处于内核态</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q33" value="D" id="q33d">
+                    <label for="q33d">D. 系统添加新类型设备时，需要注册相应的中断服务例程</label>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>答案：A</strong><br>
+                当中断或异常发生时，CPU 既可能处于内核态，又可能处于用户态，具体取决于当时 CPU正在处理的任务，选项 A 错误。不同的系统调用对应不同的内核服务例程，选项 B 正确。在中断响应阶段，若 CPU 处于用户态，则需要切换到内核态，因此在中断处理阶段，CPU 一定处于内核态，选项 C 正确。设备种类繁多，计算机不可能事先准备好所有设备对应的中断服务例程（实际上属于设备驱动程序），因此当系统添加新类型的设备时，需要注册相应的中断服务例程。
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/quiz-script.js"></script>
+    <script>
+        // 重写获取原始正确答案的函数
+        function getOriginalCorrectAnswers() {
+            return ['B', 'C', 'C', 'C', 'D', 'C', 'C', 'B', 'C', 'A', 'D', 'A', 'C', 'B', 'A', 'A', 'C', 'B', 'B', 'D', 'B', 'C', 'A', 'C', 'D', 'C', 'D', 'B', 'C', 'C', 'B', 'A', 'A'];
+        }
+    </script>
+</body>
+</html>

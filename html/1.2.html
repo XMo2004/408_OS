@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>（二）操作系统发展历程 - 操作系统选择题</title>
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 深色模式</button>
+        <a href="../index.html" class="back-link">返回主页</a>
+        <h1>（二）操作系统发展历程</h1>
+        <h2>一、单项选择题</h2>
+        
+        <!-- 题目1 -->
+        <div class="question">
+            <div class="question-number">1. 提高单机资源利用率的关键技术是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q1" value="A" id="q1a"><label for="q1a">A. 脱机技术</label></div>
+                <div class="option"><input type="radio" name="q1" value="B" id="q1b"><label for="q1b">B. 虚拟技术</label></div>
+                <div class="option"><input type="radio" name="q1" value="C" id="q1c"><label for="q1c">C. 交换技术</label></div>
+                <div class="option"><input type="radio" name="q1" value="D" id="q1d"><label for="q1d">D. 多道程序设计技术</label></div>
+            </div>
+            <div id="result1"></div>
+        </div>
+        
+        <!-- 题目2 -->
+        <div class="question">
+            <div class="question-number">2. 批处理系统的主要缺点是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q2" value="A" id="q2a"><label for="q2a">A. 系统吞吐量小</label></div>
+                <div class="option"><input type="radio" name="q2" value="B" id="q2b"><label for="q2b">B. CPU利用率不高</label></div>
+                <div class="option"><input type="radio" name="q2" value="C" id="q2c"><label for="q2c">C. 资源利用率低</label></div>
+                <div class="option"><input type="radio" name="q2" value="D" id="q2d"><label for="q2d">D. 无交互能力</label></div>
+            </div>
+            <div id="result2"></div>
+        </div>
+        
+        <!-- 题目3 -->
+        <div class="question">
+            <div class="question-number">3. 下列选项中，不属于多道程序设计的基本特征的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q3" value="A" id="q3a"><label for="q3a">A. 制约性</label></div>
+                <div class="option"><input type="radio" name="q3" value="B" id="q3b"><label for="q3b">B. 间断性</label></div>
+                <div class="option"><input type="radio" name="q3" value="C" id="q3c"><label for="q3c">C. 顺序性</label></div>
+                <div class="option"><input type="radio" name="q3" value="D" id="q3d"><label for="q3d">D. 共享性</label></div>
+            </div>
+            <div id="result3"></div>
+        </div>
+        
+        <!-- 题目4 -->
+        <div class="question">
+            <div class="question-number">4. 操作系统的基本类型主要有 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q4" value="A" id="q4a"><label for="q4a">A. 批处理操作系统、分时操作系统和多任务系统</label></div>
+                <div class="option"><input type="radio" name="q4" value="B" id="q4b"><label for="q4b">B. 批处理操作系统、分时操作系统和实时操作系统</label></div>
+                <div class="option"><input type="radio" name="q4" value="C" id="q4c"><label for="q4c">C. 单用户系统、多用户系统和批处理操作系统</label></div>
+                <div class="option"><input type="radio" name="q4" value="D" id="q4d"><label for="q4d">D. 实时操作系统、分时操作系统和多用户系统</label></div>
+            </div>
+            <div id="result4"></div>
+        </div>
+        
+        <!-- 题目5 -->
+        <div class="question">
+            <div class="question-number">5. 实时操作系统必须在 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 内处理来自外部的事件。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q5" value="A" id="q5a"><label for="q5a">A. 一个机器周期</label></div>
+                <div class="option"><input type="radio" name="q5" value="B" id="q5b"><label for="q5b">B. 被控制对象规定时间</label></div>
+                <div class="option"><input type="radio" name="q5" value="C" id="q5c"><label for="q5c">C. 周转时间</label></div>
+                <div class="option"><input type="radio" name="q5" value="D" id="q5d"><label for="q5d">D. 时间片</label></div>
+            </div>
+            <div id="result5"></div>
+        </div>
+        
+        <!-- 题目6 -->
+        <div class="question">
+            <div class="question-number">6. (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 不是设计实时操作系统的主要追求目标。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q6" value="A" id="q6a"><label for="q6a">A. 安全可靠</label></div>
+                <div class="option"><input type="radio" name="q6" value="B" id="q6b"><label for="q6b">B. 资源利用率</label></div>
+                <div class="option"><input type="radio" name="q6" value="C" id="q6c"><label for="q6c">C. 及时响应</label></div>
+                <div class="option"><input type="radio" name="q6" value="D" id="q6d"><label for="q6d">D. 快速处理</label></div>
+            </div>
+            <div id="result6"></div>
+        </div>
+        
+        <!-- 题目7 -->
+        <div class="question">
+            <div class="question-number">7. 下列 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 应用工作最好采用实时操作系统平台。<br>
+            I. 航空订票 &nbsp;&nbsp; II. 办公自动化 &nbsp;&nbsp; III. 机床控制 &nbsp;&nbsp; IV. AutoCAD<br>
+            V. 工资管理系统 &nbsp;&nbsp; VI. 股票交易系统</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q7" value="A" id="q7a"><label for="q7a">A. I、II和III</label></div>
+                <div class="option"><input type="radio" name="q7" value="B" id="q7b"><label for="q7b">B. I、III和IV</label></div>
+                <div class="option"><input type="radio" name="q7" value="C" id="q7c"><label for="q7c">C. I、V和IV</label></div>
+                <div class="option"><input type="radio" name="q7" value="D" id="q7d"><label for="q7d">D. I、III和VI</label></div>
+            </div>
+            <div id="result7"></div>
+        </div>
+        
+        <!-- 题目8 -->
+        <div class="question">
+            <div class="question-number">8. 下列关于分时系统的叙述中，错误的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q8" value="A" id="q8a"><label for="q8a">A. 分时系统主要用于批处理作业</label></div>
+                <div class="option"><input type="radio" name="q8" value="B" id="q8b"><label for="q8b">B. 分时系统中每个任务依次轮流使用时间片</label></div>
+                <div class="option"><input type="radio" name="q8" value="C" id="q8c"><label for="q8c">C. 分时系统的响应时间好</label></div>
+                <div class="option"><input type="radio" name="q8" value="D" id="q8d"><label for="q8d">D. 分时系统是一种多用户操作系统</label></div>
+            </div>
+            <div id="result8"></div>
+        </div>
+        
+        <!-- 题目9 -->
+        <div class="question">
+            <div class="question-number">9. 分时系统的一个重要性能是系统的响应时间，对操作系统的 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 因素进行改进有利于改善系统的响应时间。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q9" value="A" id="q9a"><label for="q9a">A. 加大时间片</label></div>
+                <div class="option"><input type="radio" name="q9" value="B" id="q9b"><label for="q9b">B. 采用静态页式管理</label></div>
+                <div class="option"><input type="radio" name="q9" value="C" id="q9c"><label for="q9c">C. 优先级+非抢占式调度算法</label></div>
+                <div class="option"><input type="radio" name="q9" value="D" id="q9d"><label for="q9d">D. 代码可重入</label></div>
+            </div>
+            <div id="result9"></div>
+        </div>
+        
+        <!-- 题目10 -->
+        <div class="question">
+            <div class="question-number">10. 分时系统追求的目标是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q10" value="A" id="q10a"><label for="q10a">A. 充分利用I/O设备</label></div>
+                <div class="option"><input type="radio" name="q10" value="B" id="q10b"><label for="q10b">B. 比较快速响应用户</label></div>
+                <div class="option"><input type="radio" name="q10" value="C" id="q10c"><label for="q10c">C. 提高系统吞吐率</label></div>
+                <div class="option"><input type="radio" name="q10" value="D" id="q10d"><label for="q10d">D. 充分利用内存</label></div>
+            </div>
+            <div id="result10"></div>
+        </div>
+        
+        <!-- 题目11 -->
+        <div class="question">
+            <div class="question-number">11. 在分时系统中，时间片一定时，(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 响应时间越长。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q11" value="A" id="q11a"><label for="q11a">A. 内存越多</label></div>
+                <div class="option"><input type="radio" name="q11" value="B" id="q11b"><label for="q11b">B. 内存越少</label></div>
+                <div class="option"><input type="radio" name="q11" value="C" id="q11c"><label for="q11c">C. 用户数越多</label></div>
+                <div class="option"><input type="radio" name="q11" value="D" id="q11d"><label for="q11d">D. 用户数越少</label></div>
+            </div>
+            <div id="result11"></div>
+        </div>
+        
+        <!-- 题目12 -->
+        <div class="question">
+            <div class="question-number">12. 在分时系统中，为使多个进程能够及时与系统交互，最关键的问题是能在短时间内，使所有就绪进程都能运行。当就绪进程数为100时，为保证响应时间不超过2s，此时的时间片最大应为 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q12" value="A" id="q12a"><label for="q12a">A. 10ms</label></div>
+                <div class="option"><input type="radio" name="q12" value="B" id="q12b"><label for="q12b">B. 20ms</label></div>
+                <div class="option"><input type="radio" name="q12" value="C" id="q12c"><label for="q12c">C. 50ms</label></div>
+                <div class="option"><input type="radio" name="q12" value="D" id="q12d"><label for="q12d">D. 100ms</label></div>
+            </div>
+            <div id="result12"></div>
+        </div>
+        
+        <!-- 题目13 -->
+        <div class="question">
+            <div class="question-number">13. 操作系统有多种类型。允许多个用户以交互的方式使用计算机的操作系统，称为 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) ；允许多个用户将若干作业提交给计算机系统集中处理的操作系统，称为 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) ；在 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 的控制下，计算机系统能及时处理由过程控制反馈的数据，并及时做出响应；在IBM-PC中，操作系统称为 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q13" value="A" id="q13a"><label for="q13a">A. 批处理系统</label></div>
+                <div class="option"><input type="radio" name="q13" value="B" id="q13b"><label for="q13b">B. 分时操作系统</label></div>
+                <div class="option"><input type="radio" name="q13" value="C" id="q13c"><label for="q13c">C. 实时操作系统</label></div>
+                <div class="option"><input type="radio" name="q13" value="D" id="q13d"><label for="q13d">D. 微型计算机操作系统</label></div>
+            </div>
+            <div id="result13"></div>
+        </div>
+        
+        <!-- 题目14 -->
+        <div class="question">
+            <div class="question-number">14. 下列各种系统中，(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 可以使多个进程并行执行。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q14" value="A" id="q14a"><label for="q14a">A. 分时系统</label></div>
+                <div class="option"><input type="radio" name="q14" value="B" id="q14b"><label for="q14b">B. 多处理器系统</label></div>
+                <div class="option"><input type="radio" name="q14" value="C" id="q14c"><label for="q14c">C. 批处理系统</label></div>
+                <div class="option"><input type="radio" name="q14" value="D" id="q14d"><label for="q14d">D. 实时系统</label></div>
+            </div>
+            <div id="result14"></div>
+        </div>
+        
+        <!-- 题目15 -->
+        <div class="question">
+            <div class="question-number">15. 下列关于操作系统的叙述中，正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q15" value="A" id="q15a"><label for="q15a">A. 批处理操作系统必须在响应时间内处理完一个任务</label></div>
+                <div class="option"><input type="radio" name="q15" value="B" id="q15b"><label for="q15b">B. 实时操作系统须在规定时间内处理完来自外部的事件</label></div>
+                <div class="option"><input type="radio" name="q15" value="C" id="q15c"><label for="q15c">C. 分时操作系统必须在周转时间内处理完来自外部的事件</label></div>
+                <div class="option"><input type="radio" name="q15" value="D" id="q15d"><label for="q15d">D. 分时操作系统必须在调度时间内处理完来自外部的事件</label></div>
+            </div>
+            <div id="result15"></div>
+        </div>
+        
+        <!-- 题目16 -->
+        <div class="question">
+            <div class="question-number">16. 引入多道程序技术的前提条件之一是系统具有 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q16" value="A" id="q16a"><label for="q16a">A. 多个CPU</label></div>
+                <div class="option"><input type="radio" name="q16" value="B" id="q16b"><label for="q16b">B. 多个终端</label></div>
+                <div class="option"><input type="radio" name="q16" value="C" id="q16c"><label for="q16c">C. 中断功能</label></div>
+                <div class="option"><input type="radio" name="q16" value="D" id="q16d"><label for="q16d">D. 分时功能</label></div>
+            </div>
+            <div id="result16"></div>
+        </div>
+        
+        <!-- 题目17 -->
+        <div class="question">
+            <div class="question-number">17. <span class="exam-year">【2016统考真题】</span> 下列关于批处理系统的叙述中，正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+            I. 批处理系统允许多个用户与计算机直接交互<br>
+            II. 批处理系统分为单道批处理系统和多道批处理系统<br>
+            III. 中断技术使得多道批处理系统的I/O设备可与CPU并行工作</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q17" value="A" id="q17a"><label for="q17a">A. 仅II、III</label></div>
+                <div class="option"><input type="radio" name="q17" value="B" id="q17b"><label for="q17b">B. 仅II</label></div>
+                <div class="option"><input type="radio" name="q17" value="C" id="q17c"><label for="q17c">C. 仅I、II</label></div>
+                <div class="option"><input type="radio" name="q17" value="D" id="q17d"><label for="q17d">D. 仅I、III</label></div>
+            </div>
+            <div id="result17"></div>
+        </div>
+        
+        <!-- 题目18 -->
+        <div class="question">
+            <div class="question-number">18. <span class="exam-year">【2017统考真题】</span> 与单道程序系统相比，多道程序系统的优点是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+            I. CPU利用率高 &nbsp;&nbsp; II. 系统开销小 &nbsp;&nbsp; III. 系统吞吐量大 &nbsp;&nbsp; IV. I/O设备利用率高</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q18" value="A" id="q18a"><label for="q18a">A. 仅I、III</label></div>
+                <div class="option"><input type="radio" name="q18" value="B" id="q18b"><label for="q18b">B. 仅I、IV</label></div>
+                <div class="option"><input type="radio" name="q18" value="C" id="q18c"><label for="q18c">C. 仅II、III</label></div>
+                <div class="option"><input type="radio" name="q18" value="D" id="q18d"><label for="q18d">D. 仅I、III、IV</label></div>
+            </div>
+            <div id="result18"></div>
+        </div>
+        
+        <!-- 题目19 -->
+        <div class="question">
+            <div class="question-number">19. <span class="exam-year">【2018统考真题】</span> 下列关于多任务操作系统的叙述中，正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+            I. 具有并发和并行的特点 &nbsp;&nbsp; II. 需要实现对共享资源的保护<br>
+            III. 需要运行在多CPU的硬件平台上</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q19" value="A" id="q19a"><label for="q19a">A. 仅I</label></div>
+                <div class="option"><input type="radio" name="q19" value="B" id="q19b"><label for="q19b">B. 仅II</label></div>
+                <div class="option"><input type="radio" name="q19" value="C" id="q19c"><label for="q19c">C. 仅I、II</label></div>
+                <div class="option"><input type="radio" name="q19" value="D" id="q19d"><label for="q19d">D. I、II、III</label></div>
+            </div>
+            <div id="result19"></div>
+        </div>
+        
+        <!-- 题目20 -->
+        <div class="question">
+            <div class="question-number">20. <span class="exam-year">【2022统考真题】</span> 下列关于多道程序系统的叙述中，不正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q20" value="A" id="q20a"><label for="q20a">A. 支持进程的并发执行</label></div>
+                <div class="option"><input type="radio" name="q20" value="B" id="q20b"><label for="q20b">B. 不必支持虚拟存储管理</label></div>
+                <div class="option"><input type="radio" name="q20" value="C" id="q20c"><label for="q20c">C. 需要实现对共享资源的管理</label></div>
+                <div class="option"><input type="radio" name="q20" value="D" id="q20d"><label for="q20d">D. 进程数越多CPU利用率越高</label></div>
+            </div>
+            <div id="result20"></div>
+        </div>
+    </div>
+    
+    <script src="../js/quiz-script.js"></script>
+    <script>
+        // 重写获取原始正确答案函数
+        function getOriginalCorrectAnswers() {
+            return ['D', 'D', 'C', 'B', 'B', 'B', 'D', 'A', 'C', 'B', 'C', 'B', 'B', 'B', 'B', 'C', 'A', 'D', 'C', 'D'];
+        }
+    </script>
+</body>
+</html>
