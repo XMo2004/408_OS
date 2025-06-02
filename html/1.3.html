@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>（三）操作系统的运行环境 - 操作系统选择题</title>
     <link rel="stylesheet" href="../css/quiz-styles.css">
+    <!-- MathJax支持 - 优化版本 -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: ['base', 'ams']
+            },
+            chtml: {
+                scale: 1,
+                minScale: 0.5,
+                matchFontHeight: false,
+                displayAlign: 'center',
+                displayIndent: '0'
+            },
+            startup: {
+                ready: () => {
+                    MathJax.startup.defaultReady();
+                    MathJax.startup.promise.then(() => {
+                        console.log('MathJax initial typesetting complete');
+                    });
+                }
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
     <div class="container">
@@ -1014,7 +1049,7 @@
                 <div class="explanation-header">题目解析</div>
                 <div class="explanation-content">
                     <strong>答案：A</strong><br>
-                    本题考查了＂计算机组成原理＂的考点，且综合了＂数据结构＂的内容。中断向量表用于存放中断处理程序的入口地址，CPU 通过查询得到中断类型号，然后据此计算可以得到对应中断服务程序的入口地址在中断向量表的位置，采用数组作为中断向量表的存储结构，可实现时间复杂度为  的快速访问，从而提高中断处理的效率。
+                    本题考查了＂计算机组成原理＂的考点，且综合了＂数据结构＂的内容。中断向量表用于存放中断处理程序的入口地址，CPU 通过查询得到中断类型号，然后据此计算可以得到对应中断服务程序的入口地址在中断向量表的位置，采用数组作为中断向量表的存储结构，可实现时间复杂度为 $O(1)$ 的快速访问，从而提高中断处理的效率。
                 </div>
             </div>
         </div>
