@@ -61,6 +61,7 @@ document.addEventListener('keydown', function(e) {
 let answeredQuestions = new Set();
 let userAnswers = {}; // 存储用户答案
 let totalQuestions = 0; // 总题数
+let currentPageKey = ''; // 当前页面的存储键
 
 // 检查答案函数
 function checkAnswer(questionNum, correctAnswer) {
@@ -94,6 +95,10 @@ function checkAnswer(questionNum, correctAnswer) {
     if (explanation) {
         explanation.classList.add('show');
     }
+    
+    // 自动保存进度
+    saveProgress();
+    updateProgressDisplay();
     
     // 检查是否所有题目都已完成
     checkAllQuestionsCompleted();
@@ -267,6 +272,10 @@ function initializeQuizEvents() {
                 // 自动判断答案（使用打乱后的正确答案）
                 const correctAnswers = window.shuffledCorrectAnswers || getOriginalCorrectAnswers();
                 checkAnswer(questionNum, correctAnswers[questionNum - 1]);
+                
+                // 自动保存进度和更新显示
+                saveProgress();
+                updateProgressDisplay();
             }
         });
     });
@@ -319,8 +328,221 @@ function initializeTheme() {
     }
 }
 
+// 数据永久化功能
+
+// 获取当前页面的存储键
+function getCurrentPageKey() {
+    const path = window.location.pathname;
+    const filename = path.split('/').pop().replace('.html', '');
+    return `quiz_progress_${filename}`;
+}
+
+// 保存学习进度
+function saveProgress() {
+    const progressData = {
+        answeredQuestions: Array.from(answeredQuestions),
+        userAnswers: userAnswers,
+        shuffledCorrectAnswers: window.shuffledCorrectAnswers || [],
+        timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem(currentPageKey, JSON.stringify(progressData));
+}
+
+// 加载学习进度
+function loadProgress() {
+    const savedData = localStorage.getItem(currentPageKey);
+    if (!savedData) return false;
+    
+    try {
+        const progressData = JSON.parse(savedData);
+        
+        // 恢复答题状态
+        answeredQuestions = new Set(progressData.answeredQuestions || []);
+        userAnswers = progressData.userAnswers || {};
+        window.shuffledCorrectAnswers = progressData.shuffledCorrectAnswers || [];
+        
+        // 恢复页面显示状态
+        restoreQuizState();
+        
+        return true;
+    } catch (error) {
+        console.error('加载进度失败:', error);
+        return false;
+    }
+}
+
+// 恢复测验状态
+function restoreQuizState() {
+    // 恢复每个题目的状态
+    answeredQuestions.forEach(questionNum => {
+        const answer = userAnswers[questionNum];
+        if (!answer) return;
+        
+        // 选中用户之前选择的选项
+        const radio = document.querySelector(`input[name="q${questionNum}"][value="${answer.selected}"]`);
+        if (radio) {
+            radio.checked = true;
+            radio.closest('.option').classList.add('selected');
+            
+            // 禁用该题的所有选项
+            const groupOptions = document.querySelectorAll(`input[name="q${questionNum}"]`);
+            groupOptions.forEach(groupRadio => {
+                groupRadio.disabled = true;
+                groupRadio.closest('.option').classList.add('disabled');
+            });
+            
+            // 显示答案状态
+            const questionDiv = radio.closest('.question');
+            const options = questionDiv.querySelectorAll('.option');
+            
+            options.forEach(option => {
+                const optionRadio = option.querySelector('input[type="radio"]');
+                if (optionRadio.value === answer.correct) {
+                    option.classList.add('correct');
+                } else if (optionRadio.value === answer.selected && !answer.isCorrect) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // 显示解释
+            const explanation = questionDiv.querySelector('.explanation');
+            if (explanation) {
+                explanation.classList.add('show');
+            }
+        }
+    });
+    
+    // 如果所有题目都已完成，显示结果
+    if (Object.keys(userAnswers).length === totalQuestions) {
+        setTimeout(() => {
+            showQuizResults();
+        }, 500);
+    }
+}
+
+// 重置学习进度
+function resetProgress() {
+    if (confirm('确定要重置当前页面的学习进度吗？这将清除所有答题记录。')) {
+        // 清除本地存储
+        localStorage.removeItem(currentPageKey);
+        
+        // 重置全局变量
+        answeredQuestions.clear();
+        userAnswers = {};
+        window.shuffledCorrectAnswers = [];
+        
+        // 重新加载页面
+        location.reload();
+    }
+}
+
+// 创建进度控制按钮
+function createProgressControls() {
+    const container = document.querySelector('.container');
+    const controlsDiv = document.createElement('div');
+    controlsDiv.className = 'progress-controls';
+    controlsDiv.innerHTML = `
+        <div class="progress-info">
+            <span class="progress-text">学习进度: <span id="progress-count">0</span>/${totalQuestions}</span>
+            <span class="progress-percentage">(<span id="progress-percent">0</span>%)</span>
+        </div>
+        <div class="control-buttons">
+            <button class="reset-btn" onclick="resetProgress()" title="重置学习进度">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C9.25022 4 6.82447 5.38734 5.38451 7.50024" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                重置进度
+            </button>
+            <button class="save-btn" onclick="saveProgress()" title="手动保存进度">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16L21 8V19C21 20.1046 20.1046 21 19 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 21V13H7V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 3V8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                保存进度
+            </button>
+        </div>
+    `;
+    
+    // 插入到标题后面
+    const h1 = container.querySelector('h1');
+    h1.insertAdjacentElement('afterend', controlsDiv);
+}
+
+// 更新进度显示
+function updateProgressDisplay() {
+    const progressCount = document.getElementById('progress-count');
+    const progressPercent = document.getElementById('progress-percent');
+    
+    if (progressCount && progressPercent) {
+        const answered = answeredQuestions.size;
+        const percentage = totalQuestions > 0 ? Math.round((answered / totalQuestions) * 100) : 0;
+        
+        progressCount.textContent = answered;
+        progressPercent.textContent = percentage;
+    }
+}
+
 // 页面加载时初始化
 document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
-    initializeQuizEvents();
+    
+    // 设置当前页面键
+    currentPageKey = getCurrentPageKey();
+    
+    // 尝试加载之前的进度
+    const hasProgress = loadProgress();
+    
+    // 如果没有保存的进度，正常初始化
+    if (!hasProgress) {
+        initializeQuizEvents();
+    } else {
+        // 如果有保存的进度，需要重新初始化事件但不打乱选项
+        const questions = document.querySelectorAll('.question');
+        totalQuestions = questions.length;
+        
+        // 为未答题的选项添加事件监听
+        const options = document.querySelectorAll('.option');
+        options.forEach(option => {
+            const radio = option.querySelector('input[type="radio"]');
+            if (radio && !radio.disabled) {
+                option.addEventListener('click', function() {
+                    const questionNum = parseInt(radio.name.substring(1));
+                    
+                    if (answeredQuestions.has(questionNum)) {
+                        return;
+                    }
+                    
+                    radio.checked = true;
+                    
+                    const groupName = radio.name;
+                    const groupOptions = document.querySelectorAll(`input[name="${groupName}"]`);
+                    groupOptions.forEach(groupRadio => {
+                        groupRadio.closest('.option').classList.remove('selected');
+                    });
+                    
+                    this.classList.add('selected');
+                    answeredQuestions.add(questionNum);
+                    
+                    groupOptions.forEach(groupRadio => {
+                        groupRadio.disabled = true;
+                        groupRadio.closest('.option').classList.add('disabled');
+                    });
+                    
+                    const correctAnswers = window.shuffledCorrectAnswers || getOriginalCorrectAnswers();
+                    checkAnswer(questionNum, correctAnswers[questionNum - 1]);
+                    
+                    // 自动保存进度
+                    saveProgress();
+                    updateProgressDisplay();
+                });
+            }
+        });
+    }
+    
+    // 创建进度控制界面
+    createProgressControls();
+    updateProgressDisplay();
 });

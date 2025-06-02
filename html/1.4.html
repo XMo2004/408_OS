@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一章 计算机系统概述 - 操作系统选择题</title>
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 深色模式</button>
+        <a href="../index.html" class="back-link">返回主页</a>
+        <h1>1.4 操作系统结构、引导、虚拟机</h1>
+
+        <div class="question">
+            <div class="question-number">1. 用 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 设计的操作系统结构清晰且便于调试。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q1" value="A" id="q1a"><label for="q1a">A. 分层式构架</label></div>
+                <div class="option"><input type="radio" name="q1" value="B" id="q1b"><label for="q1b">B. 模块化构架</label></div>
+                <div class="option"><input type="radio" name="q1" value="C" id="q1c"><label for="q1c">C. 微内核构架</label></div>
+                <div class="option"><input type="radio" name="q1" value="D" id="q1d"><label for="q1d">D. 宏内核构架</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">2. 下列关于分层式结构操作系统的说法中，(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 是错误的。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q2" value="A" id="q2a"><label for="q2a">A. 各层之间只能是单向依赖或单向调用</label></div>
+                <div class="option"><input type="radio" name="q2" value="B" id="q2b"><label for="q2b">B. 容易实现在系统中增加或替换一层而不影响其他层</label></div>
+                <div class="option"><input type="radio" name="q2" value="C" id="q2c"><label for="q2c">C. 具有非常灵活的依赖关系</label></div>
+                <div class="option"><input type="radio" name="q2" value="D" id="q2d"><label for="q2d">D. 系统效率较低</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">3. 下列选项中，(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 不属于模块化操作系统的特点。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q3" value="A" id="q3a"><label for="q3a">A. 很多模块化的操作系统，可以支持动态加载新模块到内核，适应性强</label></div>
+                <div class="option"><input type="radio" name="q3" value="B" id="q3b"><label for="q3b">B. 内核中的某个功能模块出错不会导致整个系统崩溃，可靠性高</label></div>
+                <div class="option"><input type="radio" name="q3" value="C" id="q3c"><label for="q3c">C. 内核中的各个模块，可以相互调用，无须通过消息传递进行通信，效率高</label></div>
+                <div class="option"><input type="radio" name="q3" value="D" id="q3d"><label for="q3d">D. 各模块间相互依赖，相比于分层式操作系统，模块化操作系统更难调试和验证</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">4. 相对于微内核系统，(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 不属于大内核操作系统的缺点。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q4" value="A" id="q4a"><label for="q4a">A. 占用内存空间大</label></div>
+                <div class="option"><input type="radio" name="q4" value="B" id="q4b"><label for="q4b">B. 缺乏可扩展性而不方便移植</label></div>
+                <div class="option"><input type="radio" name="q4" value="C" id="q4c"><label for="q4c">C. 内核切换太慢</label></div>
+                <div class="option"><input type="radio" name="q4" value="D" id="q4d"><label for="q4d">D. 可靠性较低</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">5. 下列说法中，(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 不适合描述微内核操作系统。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q5" value="A" id="q5a"><label for="q5a">A. 内核足够小</label></div>
+                <div class="option"><input type="radio" name="q5" value="B" id="q5b"><label for="q5b">B. 功能分层设计</label></div>
+                <div class="option"><input type="radio" name="q5" value="C" id="q5c"><label for="q5c">C. 基于C/S模式</label></div>
+                <div class="option"><input type="radio" name="q5" value="D" id="q5d"><label for="q5d">D. 策略与机制分离</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">6. 对于以下五种服务，在采用微内核结构的操作系统中，(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 不宜放在微内核中。<br>I. 进程间通信机制 &nbsp; II. 低级I/O &nbsp; III. 低级进程管理和调度 &nbsp; IV. 中断和陷入处理 &nbsp; V. 文件系统服务</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q6" value="A" id="q6a"><label for="q6a">A. I、II和III</label></div>
+                <div class="option"><input type="radio" name="q6" value="B" id="q6b"><label for="q6b">B. III和V</label></div>
+                <div class="option"><input type="radio" name="q6" value="C" id="q6c"><label for="q6c">C. 仅V</label></div>
+                <div class="option"><input type="radio" name="q6" value="D" id="q6d"><label for="q6d">D. IV和V</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">7. 相对于传统操作系统结构，采用微内核结构设计和实现操作系统有诸多好处，下列 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 是微内核结构的特点。<br>I. 使系统更高效 &nbsp; II. 添加系统服务时不必修改内核 &nbsp; III. 微内核结构没有单一内核稳定 &nbsp; IV. 使系统更可靠</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q7" value="A" id="q7a"><label for="q7a">A. I、III、IV</label></div>
+                <div class="option"><input type="radio" name="q7" value="B" id="q7b"><label for="q7b">B. I、II、IV</label></div>
+                <div class="option"><input type="radio" name="q7" value="C" id="q7c"><label for="q7c">C. II、IV</label></div>
+                <div class="option"><input type="radio" name="q7" value="D" id="q7d"><label for="q7d">D. I、IV</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">8. 下列关于操作系统结构的说法中，正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>I. 当前广泛使用的Windows操作系统采用的是分层式OS结构<br>II. 模块化的OS结构设计的基本原则是，每一层都仅使用其底层所提供的功能和服务，这样就使系统的调试和验证都变得容易<br>III. 因为微内核结构能有效支持多处理机运行，所以非常适合于分布式系统环境<br>IV. 采用微内核结构设计和实现操作系统具有诸多好处，如添加系统服务时，不必修改内核、使系统更高效</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q8" value="A" id="q8a"><label for="q8a">A. I和II</label></div>
+                <div class="option"><input type="radio" name="q8" value="B" id="q8b"><label for="q8b">B. I和III</label></div>
+                <div class="option"><input type="radio" name="q8" value="C" id="q8c"><label for="q8c">C. II</label></div>
+                <div class="option"><input type="radio" name="q8" value="D" id="q8d"><label for="q8d">D. III和IV</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">9. 下列关于微内核操作系统的描述中，不正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q9" value="A" id="q9a"><label for="q9a">A. 可增加操作系统的可靠性</label></div>
+                <div class="option"><input type="radio" name="q9" value="B" id="q9b"><label for="q9b">B. 可提高操作系统的执行效率</label></div>
+                <div class="option"><input type="radio" name="q9" value="C" id="q9c"><label for="q9c">C. 可提高操作系统的可移植性</label></div>
+                <div class="option"><input type="radio" name="q9" value="D" id="q9d"><label for="q9d">D. 可提高操作系统的可拓展性</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">10. 下列关于操作系统外核(exokernel)的说法中，错误的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q10" value="A" id="q10a"><label for="q10a">A. 外核可以给用户进程分配未经抽象的硬件资源</label></div>
+                <div class="option"><input type="radio" name="q10" value="B" id="q10b"><label for="q10b">B. 用户进程通过调用“库”请求操作系统外核的服务</label></div>
+                <div class="option"><input type="radio" name="q10" value="C" id="q10c"><label for="q10c">C. 外核负责完成进程调度</label></div>
+                <div class="option"><input type="radio" name="q10" value="D" id="q10d"><label for="q10d">D. 外核可以减少虚拟硬件资源的“映射”开销，提升系统效率</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">11. 对于计算机操作系统引导，描述不正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q11" value="A" id="q11a"><label for="q11a">A. 计算机的引导程序驻留在ROM中，开机后自动执行</label></div>
+                <div class="option"><input type="radio" name="q11" value="B" id="q11b"><label for="q11b">B. 引导程序先做关键部位的自检，并识别已连接的外设</label></div>
+                <div class="option"><input type="radio" name="q11" value="C" id="q11c"><label for="q11c">C. 引导程序会将硬盘中存储的操作系统全部加载到内存中</label></div>
+                <div class="option"><input type="radio" name="q11" value="D" id="q11d"><label for="q11d">D. 若计算机中安装了双系统，引导程序会与用户交互加载有关系统</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">12. 存放操作系统自举程序的芯片是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q12" value="A" id="q12a"><label for="q12a">A. SRAM</label></div>
+                <div class="option"><input type="radio" name="q12" value="B" id="q12b"><label for="q12b">B. DRAM</label></div>
+                <div class="option"><input type="radio" name="q12" value="C" id="q12c"><label for="q12c">C. ROM</label></div>
+                <div class="option"><input type="radio" name="q12" value="D" id="q12d"><label for="q12d">D. CMOS</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">13. 计算机操作系统的引导程序位于 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 中。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q13" value="A" id="q13a"><label for="q13a">A. 主板BIOS</label></div>
+                <div class="option"><input type="radio" name="q13" value="B" id="q13b"><label for="q13b">B. 片外Cache</label></div>
+                <div class="option"><input type="radio" name="q13" value="C" id="q13c"><label for="q13c">C. 主存ROM区</label></div>
+                <div class="option"><input type="radio" name="q13" value="D" id="q13d"><label for="q13d">D. 硬盘</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">14. 计算机的启动过程是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>①CPU加电，CS:IP指向FFFFOH； &nbsp; ②进行操作系统引导；<br>③执行JMP指令跳转到BIOS； &nbsp; ④登记BIOS中断例程入口地址；<br>⑤硬件自检。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q14" value="A" id="q14a"><label for="q14a">A. ①②③④⑤</label></div>
+                <div class="option"><input type="radio" name="q14" value="B" id="q14b"><label for="q14b">B. ①③⑤④②</label></div>
+                <div class="option"><input type="radio" name="q14" value="C" id="q14c"><label for="q14c">C. ①③④⑤②</label></div>
+                <div class="option"><input type="radio" name="q14" value="D" id="q14d"><label for="q14d">D. ①⑤③④②</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">15. 检查分区表是否正确，确定哪个分区为活动分区，并在程序结束时将该分区的启动程序(操作系统引导扇区)调入内存加以执行，这是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) 的任务。</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q15" value="A" id="q15a"><label for="q15a">A. MBR</label></div>
+                <div class="option"><input type="radio" name="q15" value="B" id="q15b"><label for="q15b">B. 引导程序</label></div>
+                <div class="option"><input type="radio" name="q15" value="C" id="q15c"><label for="q15c">C. 操作系统</label></div>
+                <div class="option"><input type="radio" name="q15" value="D" id="q15d"><label for="q15d">D. BIOS</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">16. 下列关于虚拟机的说法中，正确的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>I. 虚拟机可以用软件实现<br>II. 虚拟机可以用硬件实现<br>III. 多台虚拟机可同时运行在同一物理机器上，它实现了真正的并行</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q16" value="A" id="q16a"><label for="q16a">A. I和II</label></div>
+                <div class="option"><input type="radio" name="q16" value="B" id="q16b"><label for="q16b">B. I和III</label></div>
+                <div class="option"><input type="radio" name="q16" value="C" id="q16c"><label for="q16c">C. 仅I</label></div>
+                <div class="option"><input type="radio" name="q16" value="D" id="q16d"><label for="q16d">D. I、II和III</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">17. 下列关于VMware workstation虚拟机的说法中，错误的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q17" value="A" id="q17a"><label for="q17a">A. 真实硬件不会直接执行虚拟机中的敏感指令</label></div>
+                <div class="option"><input type="radio" name="q17" value="B" id="q17b"><label for="q17b">B. 虚拟机中只能安装一种操作系统</label></div>
+                <div class="option"><input type="radio" name="q17" value="C" id="q17c"><label for="q17c">C. 虚拟机是运行在计算机中的一个应用程序</label></div>
+                <div class="option"><input type="radio" name="q17" value="D" id="q17d"><label for="q17d">D. 虚拟机文件封装在一个文件夹中，并存储在数据存储器中</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">18. 虚拟机的实现离不开虚拟机管理程序 (VMM) ，下列关于VMM的说法中正确的是(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>I. 第一类VMM直接运行在硬件上，其效率通常高于第二类VMM<br>II. 由于VMM的上层需要支持操作系统的运行、应用程序的运行，因此实现VMM的代码量通常大于实现一个完整操作系统的代码量<br>III. VMM可将一台物理机器虚拟化为多台虚拟机器<br>IV. 为了支持客户操作系统的运行，第二类VMM需要完全运行在最高特权级</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q18" value="A" id="q18a"><label for="q18a">A. I、II和III</label></div>
+                <div class="option"><input type="radio" name="q18" value="B" id="q18b"><label for="q18b">B. I和III</label></div>
+                <div class="option"><input type="radio" name="q18" value="C" id="q18c"><label for="q18c">C. I、III和IV</label></div>
+                <div class="option"><input type="radio" name="q18" value="D" id="q18d"><label for="q18d">D. I、II、III、IV</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">19. 【2013统考真题】计算机开机后，操作系统最终被加载到 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q19" value="A" id="q19a"><label for="q19a">A. BIOS</label></div>
+                <div class="option"><input type="radio" name="q19" value="B" id="q19b"><label for="q19b">B. ROM</label></div>
+                <div class="option"><input type="radio" name="q19" value="C" id="q19c"><label for="q19c">C. EPROM</label></div>
+                <div class="option"><input type="radio" name="q19" value="D" id="q19d"><label for="q19d">D. RAM</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">20. 【2022统考真题】下列选项中，需要在操作系统进行初始化过程中创建的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q20" value="A" id="q20a"><label for="q20a">A. 中断向量表</label></div>
+                <div class="option"><input type="radio" name="q20" value="B" id="q20b"><label for="q20b">B. 文件系统的根目录</label></div>
+                <div class="option"><input type="radio" name="q20" value="C" id="q20c"><label for="q20c">C. 硬盘分区表</label></div>
+                <div class="option"><input type="radio" name="q20" value="D" id="q20d"><label for="q20d">D. 文件系统的索引结点表</label></div>
+            </div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">21. 【2023统考真题】与宏内核操作系统相比，下列特征中，微内核操作系统具有的是 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>I. 较好的性能 &nbsp; II. 较高的可靠性 &nbsp; III. 较高的安全性 &nbsp; IV. 较强的可扩展性</div>
+            <div class="options">
+                <div class="option"><input type="radio" name="q21" value="A" id="q21a"><label for="q21a">A. 仅II、IV</label></div>
+                <div class="option"><input type="radio" name="q21" value="B" id="q21b"><label for="q21b">B. 仅I、II、III</label></div>
+                <div class="option"><input type="radio" name="q21" value="C" id="q21c"><label for="q21c">C. 仅I、III、IV</label></div>
+                <div class="option"><input type="radio" name="q21" value="D" id="q21d"><label for="q21d">D. 仅II、III、IV</label></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/quiz-script.js"></script>
+    <script>
+        // 重写获取原始正确答案函数
+        function getOriginalCorrectAnswers() {
+            return ['A', 'C', 'B', 'C', 'B', 'C', 'C', 'C', 'B', 'C', 'C', 'C', 'D', 'C', 'A', 'A', 'B', 'B', 'D', 'A', 'D'];
+        }
+    </script>
+</body>
+</html>
